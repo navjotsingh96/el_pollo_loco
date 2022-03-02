@@ -10,7 +10,9 @@ class World {
         new Clouds()
     ];
     backgroundobjects = [
-        new BackgroundObject(0, 10)
+        new BackgroundObject('img/5.Fondo/Capas/3.Fondo3/1.png', 0, 0),
+        new BackgroundObject('img/5.Fondo/Capas/2.Fondo2/1.png', 0, 0),
+        new BackgroundObject('img/5.Fondo/Capas/1.suelo-fondo1/1.png', 0, 0),
     ];
     canvas;
     ctx;
@@ -23,11 +25,10 @@ class World {
 
     draw() {
         this.ctx.clearRect(0, 0, canvas.width, canvas.height); // to clear the canvas from the x sonst it makes duplicate
-
+        this.addObjectToMap(this.backgroundobjects);
         this.addToMap(this.character);
         this.addObjectToMap(this.enemies);
         this.addObjectToMap(this.clouds);
-        this.addObjectToMap(this.backgroundobjects);
 
         let self = this;
         requestAnimationFrame(function() {
