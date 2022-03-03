@@ -20,7 +20,7 @@ class MoveableObject {
         arr.forEach(path => { // path wird von oben genommen
             let img = new Image();
             img.src = path;
-            this.imagesCache[path] = path;
+            this.imagesCache[path] = img;
         });
     }
     moveRight() {
