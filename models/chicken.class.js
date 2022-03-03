@@ -7,7 +7,7 @@ class Chicken extends MoveableObject {
         'img/4.Secuencias_Enemy_gigantขn-Doคa_Gallinota-/1.Caminata/G3.png',
         'img/4.Secuencias_Enemy_gigantขn-Doคa_Gallinota-/1.Caminata/G4.png'
     ];
-    currentImage = 0;
+
     constructor() {
         super().loadImage('img/4.Secuencias_Enemy_gigantขn-Doคa_Gallinota-/1.Caminata/G1.png');
         this.loadImages(this.WALKING_CHICKEN); //it a image path

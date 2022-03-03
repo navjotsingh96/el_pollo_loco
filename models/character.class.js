@@ -10,9 +10,6 @@ class Character extends MoveableObject {
         'img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-25.png',
         'img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-26.png'
     ]
-
-    currentImage = 0;
-
     constructor() {
         super().loadImage('img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-21.png');
         this.loadImages(this.WALKING_PEPE);
@@ -27,7 +24,7 @@ class Character extends MoveableObject {
             this.img = this.imagesCache[path];
             this.currentImage++;
 
-        }, 60);
+        }, 80);
     }
     pepeAnimate() {
         setInterval(() => {
