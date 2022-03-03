@@ -27,9 +27,10 @@ class World {
     draw() {
         this.ctx.clearRect(0, 0, canvas.width, canvas.height); // to clear the canvas from the x sonst it makes duplicate
         this.addObjectToMap(this.backgroundobjects);
-        this.addToMap(this.character);
-        this.addObjectToMap(this.enemies);
         this.addObjectToMap(this.clouds);
+        this.addObjectToMap(this.enemies);
+        this.addToMap(this.character);
+
 
         let self = this;
         requestAnimationFrame(function() {

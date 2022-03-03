@@ -4,12 +4,24 @@ class MoveableObject {
     img;
     height = 75;
     width = 50;
-
+    imagesCache = {};
 
 
     loadImage(path) {
         this.img = new Image(); // (Iamge ist new from JS) same like document.getElementbyId('image')
         this.img.src = path;
+    }
+
+    /**
+     * to load images from Json array
+     * @param {Array} arr - ['img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-21.png', 'img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-22.png'.......] 
+     */
+    loadImages(arr) {
+        arr.forEach(path => { // path wird von oben genommen
+            let img = new Image();
+            img.src = path;
+            this.imagesCache[path] = path;
+        });
     }
     moveRight() {
         console.log('moving right');
