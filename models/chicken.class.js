@@ -13,9 +13,11 @@ class Chicken extends MoveableObject {
         this.loadImages(this.WALKING_CHICKEN); //it a image path
         this.x = 300 + Math.random() * 500; //für random platzierung  math zahl gibt wert zwischen 0 und 1 und dann wird mit  500*
         this.y = 320;
-        this.chickenAnimate();
         this.animate();
+        this.moveLeft();
+        this.speed = 0.15 + Math.random() * 0.25;
     }
+
     chickenAnimate() {
         setInterval(() => {
 
@@ -30,4 +32,5 @@ class Chicken extends MoveableObject {
             this.currentImage++;
         }, 150);
     }
+
 }
