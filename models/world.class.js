@@ -13,11 +13,13 @@ class World {
         new BackgroundObject('img/5.Fondo/Capas/5.cielo_1920-1080px.png', 0),
         new BackgroundObject('img/5.Fondo/Capas/3.Fondo3/1.png', 0),
         new BackgroundObject('img/5.Fondo/Capas/2.Fondo2/1.png', 0),
-        new BackgroundObject('img/5.Fondo/Capas/1.suelo-fondo1/1.png', 0),
+        new BackgroundObject('img/5.Fondo/Capas/1.suelo-fondo1/1.png', 0)
+
     ];
     canvas;
     ctx;
     keyboard;
+    camera_x = -100;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -32,10 +34,13 @@ class World {
     }
     draw() {
         this.ctx.clearRect(0, 0, canvas.width, canvas.height); // to clear the canvas from the x sonst it makes duplicate
+        this.ctx.translate(this.camera_x, 0);
         this.addObjectToMap(this.backgroundobjects);
         this.addObjectToMap(this.clouds);
         this.addObjectToMap(this.enemies);
         this.addToMap(this.character);
+        this.ctx.translate(-this.camera_x, 0);
+
 
 
         let self = this;
