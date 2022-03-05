@@ -17,7 +17,6 @@ class Chicken extends MoveableObject {
         this.moveLeft();
         this.speed = 0.15 + Math.random() * 0.25;
     }
-
     chickenAnimate() {
         setInterval(() => {
 
