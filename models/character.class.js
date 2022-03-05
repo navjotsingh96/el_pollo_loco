@@ -2,6 +2,7 @@ class Character extends MoveableObject {
     y = 130;
     height = 300;
     width = 170;
+    speed = 4;
     WALKING_PEPE = [
         'img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-21.png',
         'img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-22.png',
@@ -19,7 +20,18 @@ class Character extends MoveableObject {
     }
     animate() {
         setInterval(() => {
-            if (this.world.keyboard.RIGHT) {
+                if (this.world.keyboard.RIGHT) {
+                    this.x += this.speed;
+
+                }
+                if (this.world.keyboard.LEFT) {
+                    this.x -= this.speed;
+
+                }
+            },
+            1000 / 60);
+        setInterval(() => {
+            if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
 
 
                 let i = this.currentImage % this.WALKING_PEPE.length; // % modulo gibt die Rest werte an z.B wenn das i wert von 6 erreicht hat, wird von i von 0 anfangen.
@@ -29,13 +41,9 @@ class Character extends MoveableObject {
                 this.currentImage++;
 
             }
-        }, 80);
+        }, 60);
     }
-    pepeAnimate() {
-        setInterval(() => {
-            this.x += 1;
-        }, 1000 / 60);
-    }
+
     jump() {
 
     }
