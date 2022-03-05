@@ -1,5 +1,6 @@
 let canvas;
 let world;
+let keyboard = new Keyboard();
 
 
 function init() {
@@ -8,3 +9,6 @@ function init() {
     console.log('My Character ist', world.backgroundobjects);
 
 }
+window.addEventListener("keypress", (e) => {
+    console.log(e);
+})
