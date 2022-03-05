@@ -7,6 +7,7 @@ class MoveableObject {
     imagesCache = {};
     currentImage = 0;
     speed = 0.15;
+    otherDirection = false;
 
     loadImage(path) {
         this.img = new Image(); // (Iamge ist new from JS) same like document.getElementbyId('image')

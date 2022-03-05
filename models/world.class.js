@@ -53,7 +53,19 @@ class World {
         });
     }
     addToMap(mo) {
+        if (mo.otherDirection) {
+            this.ctx.save();
+            this.ctx.translate(mo.width, 0);
+            this.ctx.scale(-1, 1)
+            mo.x = mo.x * -1;
+
+        }
         this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height); // this function help to reduce the code make clear to read
         // normaly will so written this.ctx.drawImage(this.character.img, this.character.x, this.character.y, this.character.width, this.character.height)
+        if (mo.otherDirection) {
+            this.ctx.restore();
+            mo.x = mo.x * -1;
+
+        }
     }
 }
