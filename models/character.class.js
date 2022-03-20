@@ -2,7 +2,7 @@ class Character extends MoveableObject {
     y = 130;
     height = 300;
     width = 170;
-    speed = 4;
+    speed = 7;
     WALKING_PEPE = [
         'img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-21.png',
         'img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-22.png',
@@ -33,24 +33,24 @@ class Character extends MoveableObject {
     }
     animate() {
         setInterval(() => {
-                if (this.world.keyboard.RIGHT) {
+                if (this.world.keyboard.RIGHT && this.x < this.world.level1.level_end_x) {
                     this.x += this.speed;
                     this.otherDirection = false;
 
 
                 }
-                if (this.world.keyboard.LEFT) {
+                if (this.world.keyboard.LEFT && this.x > 0) {
                     this.x -= this.speed;
                     this.otherDirection = true;
 
                 }
 
-                this.world.camera_x = -this.x;
+                this.world.camera_x = -this.x + 80;
 
             },
 
             1000 / 60);
-
+        // Helps to show to picture of pepe running
         setInterval(() => {
             if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
 
@@ -63,7 +63,7 @@ class Character extends MoveableObject {
 
             }
 
-        }, 60);
+        }, 50);
     }
 
     jump() {

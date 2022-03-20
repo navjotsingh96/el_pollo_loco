@@ -1,9 +1,7 @@
 class World {
 
     character = new Character();
-    enemies = level1.enemies;
-    clouds = level1.clouds;
-    backgroundobjects = level1.backgroundobjects;
+    level1 = level1;
     canvas;
     ctx;
     keyboard;
@@ -23,9 +21,9 @@ class World {
     draw() {
         this.ctx.clearRect(0, 0, canvas.width, canvas.height); // to clear the canvas from the x sonst it makes duplicate
         this.ctx.translate(this.camera_x, 0);
-        this.addObjectToMap(this.backgroundobjects);
-        this.addObjectToMap(this.clouds);
-        this.addObjectToMap(this.enemies);
+        this.addObjectToMap(this.level1.backgroundobjects);
+        this.addObjectToMap(this.level1.clouds);
+        this.addObjectToMap(this.level1.enemies);
         this.addToMap(this.character);
         this.ctx.translate(-this.camera_x, 0);
 
