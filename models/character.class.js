@@ -23,6 +23,7 @@ class Character extends MoveableObject {
         'img/2.Secuencias_Personaje-Pepe-correcciขn/3.Secuencia_salto/J-39.png'
     ];
     world;
+    walking_sound = new Audio('audio/running.mp3');
     constructor() {
         super().loadImage('img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-21.png');
         this.loadImages(this.WALKING_PEPE);
@@ -33,15 +34,20 @@ class Character extends MoveableObject {
     }
     animate() {
         setInterval(() => {
+                this.walking_sound.pause();
                 if (this.world.keyboard.RIGHT && this.x < this.world.level1.level_end_x) {
                     this.x += this.speed;
                     this.otherDirection = false;
+                    this.walking_sound.playbackRate = 1.3;
+                    this.walking_sound.play();
 
 
                 }
                 if (this.world.keyboard.LEFT && this.x > 0) {
                     this.x -= this.speed;
                     this.otherDirection = true;
+                    this.walking_sound.play();
+
 
                 }
 
