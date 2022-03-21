@@ -1,5 +1,5 @@
 class Character extends MoveableObject {
-    y = 130;
+    y = 30;
     height = 300;
     width = 170;
     speed = 7;
@@ -29,6 +29,7 @@ class Character extends MoveableObject {
         this.loadImages(this.WALKING_IMAGES);
         this.loadImages(this.JUMPING_PEPE);
         this.animate();
+        this.applyGravity(this.JUMPING_PEPE);
         this.jump();
 
     }
@@ -66,6 +67,11 @@ class Character extends MoveableObject {
     }
 
     jump() {
+        setInterval(() => {
+            if (this.world.keyboard.SPACE) {
+                this.playAnimation(this.JUMPING_PEPE)
+            }
 
+        }, 200);
     }
 }

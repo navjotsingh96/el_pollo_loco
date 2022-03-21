@@ -8,6 +8,31 @@ class MoveableObject {
     currentImage = 0;
     speed = 0.15;
     otherDirection = false;
+    speedY = 0;
+    acceleration = 0.5;
+
+
+
+    /**
+     * 
+     * @returns Applays gravity to character
+     */
+    applyGravity() {
+        setInterval(() => {
+            if (this.isAboveGround()) {
+                this.y -= this.speedY;
+                this.speedY -= this.acceleration;
+            }
+        }, 1000 / 60);
+    }
+
+    /**
+     * 
+     * @returns if the character in air is or not
+     */
+    isAboveGround() {
+        return this.y < 130
+    }
 
     loadImage(path) {
         this.img = new Image(); // (Iamge ist new from JS) same like document.getElementbyId('image')
