@@ -13,10 +13,20 @@ class World {
         this.keyboard = keyboard
         this.draw();
         this.setWorld();
+        this.checkCollisions();
     }
 
     setWorld() {
         this.character.world = this;
+    }
+    checkCollisions() {
+        setInterval(() => {
+            this.level.enemies.forEach((enemy) => {
+                if (this.character.isColliding(enemy)) {
+                    console.log('Boom', enemy);
+                }
+            });
+        }, 200);
     }
     draw() {
         this.ctx.clearRect(0, 0, canvas.width, canvas.height); // to clear the canvas from the x sonst it makes duplicate
@@ -26,9 +36,6 @@ class World {
         this.addObjectToMap(this.level.enemies);
         this.addToMap(this.character);
         this.ctx.translate(-this.camera_x, 0);
-
-
-
         let self = this;
         requestAnimationFrame(function() {
             self.draw();

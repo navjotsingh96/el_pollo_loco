@@ -59,13 +59,25 @@ class MoveableObject {
 
     /**
      * Helps to draw rectangels arounds objects(images) 
+     * instanceof used only for specific objects that i want to show, apart of will not been shown
      */
     drawFrames(ctx) {
-            ctx.beginPath();
-            ctx.lineWidth = '3';
-            ctx.strokeStyle = 'red';
-            ctx.rect(this.x, this.y, this.width, this.height);
-            ctx.stroke();
+            if (this instanceof Character || this instanceof Chicken || this instanceof Endboss) {
+                ctx.beginPath();
+                ctx.lineWidth = '3';
+                ctx.strokeStyle = 'red';
+                ctx.rect(this.x, this.y, this.width, this.height);
+                ctx.stroke();
+            }
+        }
+        /**
+         * @returns is Character. is colliding with chicken?
+         */
+    isColliding(mo) {
+            return this.x + this.width > mo.x &&
+                this.y + this.height > mo.y &&
+                this.x < mo.x &&
+                this.y < mo.y + mo.height
         }
         /**
          * 
