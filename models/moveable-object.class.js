@@ -11,10 +11,7 @@ class MoveableObject {
     speedY = 0;
     acceleration = 0.5;
 
-
-
     /**
-     * 
      * @returns Applays gravity to character
      */
     applyGravity() {
@@ -52,10 +49,29 @@ class MoveableObject {
     }
 
     /**
-     * 
-     * @param {object} images - are the photos from all the WALKING_IMAGES Array so we can use only one function for all images, who's have to run
-     * this function animate all the images into running form
+     * @returns  this function help to reduce the code make clear to read
+     *normaly will so written this.ctx.drawImage(this.character.img, this.character.x, this.character.y, this.character.width, this.character.height)
      */
+
+    draw(ctx) {
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    }
+
+    /**
+     * Helps to draw rectangels arounds objects(images) 
+     */
+    drawFrames(ctx) {
+            ctx.beginPath();
+            ctx.lineWidth = '3';
+            ctx.strokeStyle = 'red';
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
+        }
+        /**
+         * 
+         * @param {object} images - are the photos from all the WALKING_IMAGES Array so we can use only one function for all images, who's have to run
+         * this function animate all the images into running form
+         */
     playAnimation(images) {
         let i = this.currentImage % this.WALKING_IMAGES.length; // % modulo gibt die Rest werte an z.B wenn das i wert von 6 erreicht hat, wird von i von 0 anfangen.
         // z.B 0 % 6 = 0, 1 1/6 = 0,1 wenn 6/6 = 1 aber wenn 7/6 = 1 ,0

@@ -34,6 +34,11 @@ class World {
             self.draw();
         });
     }
+
+    /**
+     * 
+     * @param {images/object} objects or images from level-class 
+     */
     addObjectToMap(objects) {
         // from ___this- this.backgroundobjects.forEach(object => {
         //this.addToMap(object);
@@ -43,20 +48,35 @@ class World {
 
         });
     }
+
+
     addToMap(mo) {
-        if (mo.otherDirection) {
-            this.ctx.save();
-            this.ctx.translate(mo.width, 0);
-            this.ctx.scale(-1, 1)
-            mo.x = mo.x * -1;
-
+            if (mo.otherDirection) {
+                this.flipImage(mo);
+            }
+            mo.draw(this.ctx); // this function help to reduce the code make clear to read
+            // normaly will so written this.ctx.drawImage(this.character.img, this.character.x, this.character.y, this.character.width, this.character.height)
+            mo.drawFrames(this.ctx);
+            if (mo.otherDirection) {
+                this.flipImageBack(mo);
+            }
         }
-        this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height); // this function help to reduce the code make clear to read
-        // normaly will so written this.ctx.drawImage(this.character.img, this.character.x, this.character.y, this.character.width, this.character.height)
-        if (mo.otherDirection) {
-            this.ctx.restore();
-            mo.x = mo.x * -1;
+        /**
+         * @returns flips the Character(images) to left if user press left key
+         */
 
-        }
+    flipImage(mo) {
+        this.ctx.save();
+        this.ctx.translate(mo.width, 0);
+        this.ctx.scale(-1, 1)
+        mo.x = mo.x * -1;
+    }
+
+    /**
+     * @returns flips the Character(images) to normal or right if user press right key
+     */
+    flipImageBack(mo) {
+        this.ctx.restore();
+        mo.x = mo.x * -1;
     }
 }
