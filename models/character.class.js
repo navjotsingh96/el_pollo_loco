@@ -11,7 +11,7 @@ class Character extends MoveableObject {
         'img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-25.png',
         'img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-26.png'
     ];
-    JUMPING_PEPE = [
+    IMAGES_JUMPING = [
         'img/2.Secuencias_Personaje-Pepe-correcciขn/3.Secuencia_salto/J-31.png',
         'img/2.Secuencias_Personaje-Pepe-correcciขn/3.Secuencia_salto/J-32.png',
         'img/2.Secuencias_Personaje-Pepe-correcciขn/3.Secuencia_salto/J-33.png',
@@ -20,16 +20,18 @@ class Character extends MoveableObject {
         'img/2.Secuencias_Personaje-Pepe-correcciขn/3.Secuencia_salto/J-36.png',
         'img/2.Secuencias_Personaje-Pepe-correcciขn/3.Secuencia_salto/J-37.png',
         'img/2.Secuencias_Personaje-Pepe-correcciขn/3.Secuencia_salto/J-38.png',
-        'img/2.Secuencias_Personaje-Pepe-correcciขn/3.Secuencia_salto/J-39.png'
+        'img/2.Secuencias_Personaje-Pepe-correcciขn/3.Secuencia_salto/J-39.png',
+        'img/2.Secuencias_Personaje-Pepe-correcciขn/3.Secuencia_salto/J-40.png'
+
     ];
     world;
     walking_sound = new Audio('audio/running.mp3');
     constructor() {
         super().loadImage('img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-21.png');
         this.loadImages(this.WALKING_IMAGES);
-        this.loadImages(this.JUMPING_PEPE);
+        this.loadImages(this.IMAGES_JUMPING);
         this.animate();
-        this.applyGravity(this.JUMPING_PEPE);
+        this.applyGravity();
         this.jump();
 
     }
@@ -37,21 +39,18 @@ class Character extends MoveableObject {
         setInterval(() => {
                 this.walking_sound.pause();
                 if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-                    this.x += this.speed;
-                    this.otherDirection = false;
-                    this.walking_sound.playbackRate = 1.3;
+                    this.moveRight();
                     this.walking_sound.play();
-
-
                 }
                 if (this.world.keyboard.LEFT && this.x > 0) {
-                    this.x -= this.speed;
-                    this.otherDirection = true;
+                    this.moveLeft();
                     this.walking_sound.play();
-
-
                 }
 
+                if (this.world.keyboard.UP && !this.isAboveGround()) {
+                    this.speedY = 12;
+
+                }
                 this.world.camera_x = -this.x + 80;
 
             },
@@ -59,19 +58,19 @@ class Character extends MoveableObject {
             1000 / 60);
         // Helps to show to picture of pepe running
         setInterval(() => {
-            if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-                this.playAnimation(this.WALKING_IMAGES)
-            }
+            if (this.isAboveGround()) {
+                this.playAnimation(this.IMAGES_JUMPING)
 
+            } else {
+                if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+                    this.playAnimation(this.WALKING_IMAGES)
+                }
+            }
         }, 50);
     }
 
-    jump() {
-        setInterval(() => {
-            if (this.world.keyboard.SPACE) {
-                this.playAnimation(this.JUMPING_PEPE)
-            }
 
-        }, 200);
+    jump() {
+
     }
 }
