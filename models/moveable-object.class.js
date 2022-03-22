@@ -10,7 +10,7 @@ class MoveableObject {
     otherDirection = false;
     speedY = 0;
     acceleration = 0.5;
-
+    energey = 100;
     /**
      * @returns Applays gravity to character
      */
@@ -74,10 +74,20 @@ class MoveableObject {
          * @returns is Character. is colliding with chicken?
          */
     isColliding(mo) {
-            return this.x + this.width > mo.x &&
-                this.y + this.height > mo.y &&
-                this.x < mo.x &&
-                this.y < mo.y + mo.height
+        return this.x + this.width > mo.x &&
+            this.y + this.height > mo.y &&
+            this.x < mo.x &&
+            this.y < mo.y + mo.height
+    }
+
+    /**
+     * if character hit enemy Energey will be down
+     */
+    hit() {
+            this.energey -= 5;
+            if (this.energey < 0) {
+                this.energey = 0;
+            }
         }
         /**
          * 
