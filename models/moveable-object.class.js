@@ -27,21 +27,8 @@ class MoveableObject extends DrawableObject {
     }
 
     /**
-     * Helps to draw rectangels arounds objects(images) 
-     * instanceof used only for specific objects that i want to show, apart of will not been shown
+     * @returns is Character. is colliding with chicken?
      */
-    drawFrames(ctx) {
-            if (this instanceof Character || this instanceof Chicken || this instanceof Endboss) {
-                ctx.beginPath();
-                ctx.lineWidth = '3';
-                ctx.strokeStyle = 'red';
-                ctx.rect(this.x, this.y, this.width, this.height);
-                ctx.stroke();
-            }
-        }
-        /**
-         * @returns is Character. is colliding with chicken?
-         */
     isColliding(mo) {
         return this.x + this.width > mo.x &&
             this.y + this.height > mo.y &&
@@ -94,5 +81,8 @@ class MoveableObject extends DrawableObject {
     moveLeft() {
         this.x -= this.speed;
         this.otherDirection = true;
+    }
+    jump() {
+        this.speedY = 15;
     }
 }

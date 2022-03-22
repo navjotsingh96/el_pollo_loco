@@ -33,4 +33,18 @@ class DrawableObject {
     draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
+
+    /**
+     * Helps to draw rectangels arounds objects(images) 
+     * instanceof used only for specific objects that i want to show, apart of will not been shown
+     */
+    drawFrames(ctx) {
+        if (this instanceof Character || this instanceof Chicken || this instanceof Endboss) {
+            ctx.beginPath();
+            ctx.lineWidth = '3';
+            ctx.strokeStyle = 'red';
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
+        }
+    }
 }

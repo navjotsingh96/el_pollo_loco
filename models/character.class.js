@@ -49,7 +49,7 @@ class Character extends MoveableObject {
         this.loadImages(this.IMAGES_HURT);
         this.animate();
         this.applyGravity();
-        this.jump();
+
 
     }
     animate() {
@@ -65,7 +65,7 @@ class Character extends MoveableObject {
                 }
 
                 if (this.world.keyboard.UP && !this.isAboveGround()) {
-                    this.speedY = 12;
+                    this.jump();
 
                 }
                 this.world.camera_x = -this.x + 80;
@@ -100,9 +100,4 @@ class Character extends MoveableObject {
         }, 50);
     }
 
-
-
-    jump() {
-
-    }
 }
