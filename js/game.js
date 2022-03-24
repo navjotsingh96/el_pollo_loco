@@ -2,6 +2,11 @@ let canvas;
 let world;
 let keyborad = new Keyboard();
 
+function startGame() {
+    document.getElementById('startScreen').classList.add('d-none');
+    init();
+
+}
 
 function init() {
     canvas = document.getElementById('canvas');
