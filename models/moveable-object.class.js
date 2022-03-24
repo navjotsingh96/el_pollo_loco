@@ -23,12 +23,15 @@ class MoveableObject extends DrawableObject {
      * @returns if the character in air is or not
      */
     isAboveGround() {
-        return this.y < 140
-    }
-
-    /**
-     * @returns is Character. is colliding with chicken?
-     */
+            if (this instanceof ThrowableObject) {
+                return true
+            } else {
+                return this.y < 140
+            }
+        }
+        /**
+         * @returns is Character. is colliding with chicken?
+         */
     isColliding(mo) {
         return this.x + this.width > mo.x &&
             this.y + this.height > mo.y &&

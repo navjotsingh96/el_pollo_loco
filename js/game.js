@@ -10,6 +10,7 @@ function init() {
 
 }
 window.addEventListener("keydown", (e) => {
+
     if (e.keyCode == 38) {
         keyborad.UP = true;
     }
@@ -24,6 +25,9 @@ window.addEventListener("keydown", (e) => {
     }
     if (e.keyCode == 32) {
         keyborad.SPACE = true;
+    }
+    if (e.keyCode == 68) {
+        keyborad.D = true;
     }
 
 })
@@ -42,6 +46,9 @@ window.addEventListener("keyup", (e) => {
     }
     if (e.keyCode == 32) {
         keyborad.SPACE = false;
+    }
+    if (e.keyCode == 68) {
+        keyborad.D = false;
     }
 
 })
