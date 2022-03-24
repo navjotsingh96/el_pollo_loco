@@ -15,7 +15,6 @@ function init() {
 
 }
 window.addEventListener("keydown", (e) => {
-    console.log(e.keyCode)
     if (e.keyCode == 38) {
         keyborad.UP = true;
     }

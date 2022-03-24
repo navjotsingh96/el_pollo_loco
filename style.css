@@ -10,7 +10,8 @@ canvas {
     background-color: black;
 }
 
-#startScreen {
+#startScreen,
+#endScreen {
     width: 720px;
     height: 480px;
     position: absolute;

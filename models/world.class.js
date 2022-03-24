@@ -8,7 +8,7 @@ class World {
     camera_x = -100;
     statusBar = new StatusBar();
     throwableobjects = [new ThrowableObject()];
-
+    game_over = new Audio('audio/gameOver.mp3');
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas; // canvas definiert und für unten benutzt
@@ -33,7 +33,8 @@ class World {
             if (this.character.isColliding(enemy)) {
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energey);
-                console.log(this.character.energey)
+                console.log(this.character.energey);
+                this.gameOver();
 
             }
         });
@@ -114,5 +115,16 @@ class World {
     flipImageBack(mo) {
         this.ctx.restore();
         mo.x = mo.x * -1;
+    }
+    gameOver() {
+        if (this.character.energey == 0) {
+            this.game_over.play();
+
+            setTimeout(() => {
+                let canavs = document.getElementById('canvas');
+                canavs.classList.add('d-none');
+                document.getElementById('endScreen').classList.remove('d-none');
+            }, 5000);
+        }
     }
 }
