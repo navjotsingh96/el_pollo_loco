@@ -1,7 +1,14 @@
 class ThrowableObject extends MoveableObject {
+    BOTTEL_IMAGES = [
+        'img/6.botella/Rotaciขn/Mesa de trabajo 1 copia 3.png',
+        'img/6.botella/Rotaciขn/Mesa de trabajo 1 copia 4.png',
+        'img/6.botella/Rotaciขn/Mesa de trabajo 1 copia 5.png',
+        'img/6.botella/Rotaciขn/Mesa de trabajo 1 copia 6.png'
+    ];
 
     constructor(x, y) {
         super().loadImage('img/6.botella/Rotaciขn/Mesa de trabajo 1 copia 3.png');
+        this.loadImages(this.BOTTEL_IMAGES);
         this.x = x;
         this.y = y;
         this.height = 60;
@@ -15,5 +22,10 @@ class ThrowableObject extends MoveableObject {
         setInterval(() => {
             this.x += 15;
         }, 25);
+
+        setInterval(() => {
+            this.playAnimation(this.BOTTEL_IMAGES);
+
+        }, 1000 / 60);
     }
 }
