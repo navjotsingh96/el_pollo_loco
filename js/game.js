@@ -4,6 +4,7 @@ let keyborad = new Keyboard();
 
 function startGame() {
     document.getElementById('startScreen').classList.add('d-none');
+
     init();
 
 }
@@ -12,10 +13,9 @@ function init() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyborad);
 
-
 }
 window.addEventListener("keydown", (e) => {
-
+    console.log(e.keyCode)
     if (e.keyCode == 38) {
         keyborad.UP = true;
     }
@@ -33,6 +33,12 @@ window.addEventListener("keydown", (e) => {
     }
     if (e.keyCode == 68) {
         keyborad.D = true;
+    }
+    if (e.keyCode == 77) {
+        if (keyborad.M == true) {
+            keyborad.M = false;
+        } else
+            keyborad.M = true;
     }
 
 })
