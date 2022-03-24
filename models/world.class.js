@@ -25,6 +25,7 @@ class World {
             this.level.enemies.forEach((enemy) => {
                 if (this.character.isColliding(enemy)) {
                     this.character.hit();
+                    this.statusBar.setPercentage(this.character.energey);
                     console.log(this.character.energey)
 
                 }
@@ -35,7 +36,13 @@ class World {
         this.ctx.clearRect(0, 0, canvas.width, canvas.height); // to clear the canvas from the x sonst it makes duplicate
         this.ctx.translate(this.camera_x, 0);
         this.addObjectToMap(this.level.backgroundobjects);
+
+
+        this.ctx.translate(-this.camera_x, 0);
+        // ----- Space for firxed Objects---
         this.addToMap(this.statusBar);
+        this.ctx.translate(this.camera_x, 0);
+
         this.addToMap(this.character);
 
         this.addObjectToMap(this.level.clouds);

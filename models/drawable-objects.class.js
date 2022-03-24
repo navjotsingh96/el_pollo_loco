@@ -13,30 +13,13 @@ class DrawableObject {
         this.img.src = path;
     }
 
-
     /**
-     * to load images from Json array
-     * @param {Array} arr - ['img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-21.png', 'img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-22.png'.......] 
+     * @returns  this function help to reduce the code make clear to read
+     *normaly will so written this.ctx.drawImage(this.character.img, this.character.x, this.character.y, this.character.width, this.character.height)
      */
-    loadImages(arr) {
-            arr.forEach(path => { // path wird von oben genommen
-                let img = new Image();
-                img.src = path;
-                this.imagesCache[path] = img;
-            });
-        }
-        /**
-         * @returns  this function help to reduce the code make clear to read
-         *normaly will so written this.ctx.drawImage(this.character.img, this.character.x, this.character.y, this.character.width, this.character.height)
-         */
 
     draw(ctx) {
-        try {
-            ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-        } catch (e) {
-            console.warn('this img cannot load', e);
-            console.log('this is src', this.img.src);
-        }
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 
     /**
@@ -52,4 +35,19 @@ class DrawableObject {
             ctx.stroke();
         }
     }
+
+    /**
+     * to load images from Json array
+     * @param {Array} arr - ['img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-21.png', 'img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-22.png'.......] 
+     */
+    loadImages(arr) {
+        arr.forEach(path => { // path wird von oben genommen
+            let img = new Image();
+            img.src = path;
+            this.imagesCache[path] = img;
+        });
+    }
+
+
+
 }
