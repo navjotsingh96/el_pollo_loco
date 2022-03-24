@@ -38,18 +38,47 @@ class Character extends MoveableObject {
         'img/2.Secuencias_Personaje-Pepe-correcciขn/4.Herido/H-41.png',
         'img/2.Secuencias_Personaje-Pepe-correcciขn/4.Herido/H-42.png',
         'img/2.Secuencias_Personaje-Pepe-correcciขn/4.Herido/H-43.png'
+    ];
+    IMAGES_BOARING = [
+        'img/2.Secuencias_Personaje-Pepe-correcciขn/1.IDLE/IDLE/I-1.png',
+        'img/2.Secuencias_Personaje-Pepe-correcciขn/1.IDLE/IDLE/I-2.png',
+        'img/2.Secuencias_Personaje-Pepe-correcciขn/1.IDLE/IDLE/I-3.png',
+        'img/2.Secuencias_Personaje-Pepe-correcciขn/1.IDLE/IDLE/I-4.png',
+        'img/2.Secuencias_Personaje-Pepe-correcciขn/1.IDLE/IDLE/I-5.png',
+        'img/2.Secuencias_Personaje-Pepe-correcciขn/1.IDLE/IDLE/I-6.png',
+        'img/2.Secuencias_Personaje-Pepe-correcciขn/1.IDLE/IDLE/I-7.png',
+        'img/2.Secuencias_Personaje-Pepe-correcciขn/1.IDLE/IDLE/I-8.png',
+        'img/2.Secuencias_Personaje-Pepe-correcciขn/1.IDLE/IDLE/I-9.png',
+        'img/2.Secuencias_Personaje-Pepe-correcciขn/1.IDLE/IDLE/I-10.png',
     ]
+    IMAGES_SLEEPING = [
+        'img/2.Secuencias_Personaje-Pepe-correcciขn/1.IDLE/LONG_IDLE/I-11.png',
+        'img/2.Secuencias_Personaje-Pepe-correcciขn/1.IDLE/LONG_IDLE/I-12.png',
+        'img/2.Secuencias_Personaje-Pepe-correcciขn/1.IDLE/LONG_IDLE/I-13.png',
+        'img/2.Secuencias_Personaje-Pepe-correcciขn/1.IDLE/LONG_IDLE/I-14.png',
+        'img/2.Secuencias_Personaje-Pepe-correcciขn/1.IDLE/LONG_IDLE/I-15.png',
+        'img/2.Secuencias_Personaje-Pepe-correcciขn/1.IDLE/LONG_IDLE/I-16.png',
+        'img/2.Secuencias_Personaje-Pepe-correcciขn/1.IDLE/LONG_IDLE/I-17.png',
+        'img/2.Secuencias_Personaje-Pepe-correcciขn/1.IDLE/LONG_IDLE/I-18.png',
+        'img/2.Secuencias_Personaje-Pepe-correcciขn/1.IDLE/LONG_IDLE/I-19.png',
+        'img/2.Secuencias_Personaje-Pepe-correcciขn/1.IDLE/LONG_IDLE/I-20.png'
+    ];
     world;
+    lastMove = new Date().getTime();
     walking_sound = new Audio('audio/running.mp3');
     jumping_sound = new Audio('audio/jumping.mp3');
     hurting_sound = new Audio('audio/ouch.mp3');
     bgr_music = new Audio('audio/gameSound.mp3');
+    sleep_sound = new Audio('audio/sleeping.mp3');
+    bored_sound = new Audio('audio/bored.mp3');
     constructor() {
         super().loadImage('img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-21.png');
         this.loadImages(this.WALKING_IMAGES);
         this.loadImages(this.IMAGES_JUMPING);
         this.loadImages(this.IMAGES_DEAD);
         this.loadImages(this.IMAGES_HURT);
+        this.loadImages(this.IMAGES_SLEEPING);
+        this.loadImages(this.IMAGES_BOARING);
         this.animate();
         this.applyGravity();
 
@@ -100,6 +129,8 @@ class Character extends MoveableObject {
                 } else {
                     if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
                         this.playAnimation(this.WALKING_IMAGES);
+                    } else {
+                        this.sleepingCharacter();
                     }
                 }
             }
@@ -109,6 +140,17 @@ class Character extends MoveableObject {
                 this.playAnimation(this.IMAGES_JUMPING);
             }
         }, 100);
+    }
+    sleepingCharacter() {
+        this.firstMove = new Date().getTime() - this.lastMove;
+        if (this.firstMove > 2000) {
+            this.playAnimation(this.IMAGES_BOARING);
+            this.bored_sound.play();
+        }
+        if (this.firstMove > 5000) {
+            this.playAnimation(this.IMAGES_SLEEPING);
+            this.sleep_sound.play();
+        }
     }
 
 }
