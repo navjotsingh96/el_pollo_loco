@@ -36,14 +36,9 @@ class Chicken extends MoveableObject {
         setInterval(() => {
             if (this.isHurt()) {
                 console.log(this.lastHit);
+                console.log(this.Chicken.lastHit);
             }
         }, 50);
-    }
-    isHurt() {
-        let timepassed = new Date().getTime() - this.ChcikenlastHit; // time in ms
-        timepassed = timepassed / 1000; //time in sec    
-
-        return timepassed < 0.5;
     }
 
 }

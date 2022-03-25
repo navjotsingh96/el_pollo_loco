@@ -70,6 +70,9 @@ class Character extends MoveableObject {
     hurting_sound = new Audio('audio/ouch.mp3');
     bgr_music = new Audio('audio/gameSound.mp3');
     sleep_sound = new Audio('audio/sleeping.mp3');
+    playInterval = 100;
+
+
     constructor() {
         super().loadImage('img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-21.png');
         this.loadImages(this.WALKING_IMAGES);
@@ -85,69 +88,72 @@ class Character extends MoveableObject {
     }
     animate() {
         setInterval(() => {
-                this.walking_sound.pause();
-                this.bgr_music.play();
-                this.bgr_music.volume = 0.2;
-                if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-                    this.moveRight();
-                    this.walking_sound.play();
-                }
-                if (this.world.keyboard.LEFT && this.x > 0) {
-                    this.moveLeft();
-                    this.walking_sound.play();
-                }
-
-                if (this.world.keyboard.UP && !this.isAboveGround()) {
-                    this.jump();
-                    this.jumping_sound.play();
-
-                }
-                if (this.world.keyboard.M) {
-                    this.bgr_music.pause();
-                }
-                this.world.camera_x = -this.x + 80;
-
+                this.characterMoving();
             },
-
             1000 / 60);
         // Helps to show to picture of pepe running
+
         setInterval(() => {
+            this.animationPlay();
+        }, this.playInterval);
+    }
+
+    characterMoving() {
+        this.walking_sound.pause();
+        /*    this.bgr_music.play();
+           this.sleep_sound.pause();
+           this.bgr_music.volume = 0.2; */
+        if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+            this.moveRight();
+            this.walking_sound.play();
+        }
+        if (this.world.keyboard.LEFT && this.x > 0) {
+            this.moveLeft();
+            this.walking_sound.play();
+        }
+
+        if (this.world.keyboard.UP && !this.isAboveGround()) {
+            this.jump();
+            this.jumping_sound.play();
+
+        }
+        if (this.world.keyboard.M) {
+            this.bgr_music.pause();
+        }
+        this.world.camera_x = -this.x + 80;
+    }
 
 
+    animationPlay() {
+        if (this.isDead()) {
+            this.playAnimation(this.IMAGES_DEAD);
 
-            if (this.isDead()) {
-                this.playAnimation(this.IMAGES_DEAD);
+        } else if (this.isHurt()) {
+            this.playAnimation(this.IMAGES_HURT);
+            this.hurting_sound.volume = 0.1;
+            this.hurting_sound.play();
+        } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+            this.playAnimation(this.WALKING_IMAGES);
+            console.log(this.playInterval)
 
-            } else {
-                if (this.isHurt()) {
-                    this.playAnimation(this.IMAGES_HURT);
-                    this.hurting_sound.volume = 0.1;
-                    this.hurting_sound.play();
+        } else if (this.isAboveGround()) {
+            this.playInterval = 200;
+            this.playAnimation(this.IMAGES_JUMPING);
+            console.log(this.playInterval)
 
-                } else {
-                    if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-                        this.playAnimation(this.WALKING_IMAGES);
-                    } else {
-                        this.sleepingCharacter();
-                    }
-                }
-            }
-        }, 50);
-        setInterval(() => {
-            if (this.isAboveGround()) {
-                this.playAnimation(this.IMAGES_JUMPING);
-            }
-        }, 100);
+        } else {
+            this.sleepingCharacter();
+        }
     }
     sleepingCharacter() {
         this.firstMove = new Date().getTime() - this.lastMove;
         if (this.firstMove > 2000) {
             this.playAnimation(this.IMAGES_BOARING);
         }
-        if (this.firstMove > 5000) {
-            this.playAnimation(this.IMAGES_SLEEPING);
-            this.sleep_sound.play();
-        }
+        /*   if (this.firstMove > 5000) {
+              this.playAnimation(this.IMAGES_SLEEPING);
+               this.sleep_sound.play();
+          } */
     }
 
 }
