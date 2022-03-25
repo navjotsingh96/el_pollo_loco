@@ -70,7 +70,6 @@ class Character extends MoveableObject {
     hurting_sound = new Audio('audio/ouch.mp3');
     bgr_music = new Audio('audio/gameSound.mp3');
     sleep_sound = new Audio('audio/sleeping.mp3');
-    bored_sound = new Audio('audio/bored.mp3');
     constructor() {
         super().loadImage('img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-21.png');
         this.loadImages(this.WALKING_IMAGES);
@@ -123,7 +122,6 @@ class Character extends MoveableObject {
                 if (this.isHurt()) {
                     this.playAnimation(this.IMAGES_HURT);
                     this.hurting_sound.volume = 0.1;
-
                     this.hurting_sound.play();
 
                 } else {
@@ -145,7 +143,6 @@ class Character extends MoveableObject {
         this.firstMove = new Date().getTime() - this.lastMove;
         if (this.firstMove > 2000) {
             this.playAnimation(this.IMAGES_BOARING);
-            this.bored_sound.play();
         }
         if (this.firstMove > 5000) {
             this.playAnimation(this.IMAGES_SLEEPING);
