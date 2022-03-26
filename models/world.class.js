@@ -95,32 +95,51 @@ class World {
     }
 
     checkCollisionsWithBottel() {
-        this.level.enemies.forEach((enemy) => {
-            this.throwableobjects.forEach((bottel) => {
+            this.level.enemies.forEach((enemy) => {
+                this.throwableobjects.forEach((bottel) => {
 
-                if (bottel.isColliding(enemy) && !enemy.isDead() && !enemy.isHurt()) {
-                    enemy.hit();
-                    console.log(this.endBoss.bossEnergy);
-                    setTimeout(() => {
-                        this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
+                    if (bottel.isColliding(enemy) && !enemy.isDead() && !enemy.isHurt()) {
+                        enemy.hit();
+                        this.deleteChicken();
+                    }
+                    if (bottel.isColliding(this.endBoss)) {
+                        this.endBoss.hitBoss();
+                        this.endBossHited();
+                    }
+                    if (this.endBoss.isBossDead()) {
+                        this.endBossDead();
+                    }
 
-                    }, 400);
-                }
-                if (bottel.isColliding(this.endBoss)) {
-                    console.log('end boss hited');
-                    this.endBoss.hitBoss();
-                    this.endBoss.x = this.endBoss.x - Math.random() * 500;
-
-                    setTimeout(() => {
-                        this.endBoss.x = 2250;
-                    }, 500);
-
-                    this.statusBar.setPercentage(this.endBoss.bossEnergy);
-                    console.log(this.endBoss.bossEnergy);
-                }
-
+                });
             });
-        });
+        }
+        /**
+         * delete chicken from Array but wait because of dead animation.
+         */
+    deleteChicken() {
+            setTimeout(() => {
+                this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
+
+            }, 400);
+        }
+        /**
+         * Endboss changes the postion and go back again to his postion
+         */
+    endBossHited() {
+            this.endBoss.x = this.endBoss.x - Math.random() * 500;
+            setTimeout(() => {
+                this.endBoss.x = 2250;
+            }, 500);
+            this.statusBar.setPercentage(this.endBoss.bossEnergy);
+
+        }
+        /**
+         * delete Boss from Array but wait because of dead animation.
+         */
+    endBossDead() {
+        setTimeout(() => {
+            this.level.enemies.splice(this.endBoss);
+        }, 2000);
     }
 
     draw() {
