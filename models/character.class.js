@@ -131,7 +131,7 @@ class Character extends MoveableObject {
         } else if (this.isHurt()) {
             this.playAnimation(this.IMAGES_HURT);
             this.hurting_sound.volume = 0.1;
-            this.hurting_sound.play();
+            /* this.hurting_sound.play(); */
         } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
             this.playAnimation(this.WALKING_IMAGES);
             console.log(this.playInterval)

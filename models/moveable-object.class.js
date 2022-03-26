@@ -6,6 +6,7 @@ class MoveableObject extends DrawableObject {
     acceleration = 0.5;
     energey = 100;
     lastHit = 0;
+    enemyEnergy = 100;
     /**
      * @returns Applays gravity to character
      */
@@ -43,9 +44,18 @@ class MoveableObject extends DrawableObject {
      * if character hit enemy Energey will be down and last hit when the character was in touch of enemy
      */
     hit() {
-            this.energey -= 5;
-            if (this.energey < 0) {
-                this.energey = 0;
+        this.energey -= 5;
+        if (this.energey < 0) {
+            this.energey = 0;
+        } else {
+            this.lastHit = new Date().getTime();
+        }
+    }
+
+    hitChicken() {
+            this.enemyEnergy -= 20;
+            if (this.enemyEnergy < 0) {
+                this.enemyEnergy = 0;
             } else {
                 this.lastHit = new Date().getTime();
             }

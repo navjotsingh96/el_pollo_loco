@@ -25,25 +25,81 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrowObject();
-        }, 200);
-    }
+            this.checkCollisionsWithBottel();
 
+        }, 50);
+    }
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energey);
-                console.log(this.character.energey);
-                this.gameOver();
+                /*  console.log(this.character.energey);
+                 this.gameOver(); */
 
             }
         });
     }
+
+    /* 
+        checkCollisionsChicken() {
+            this.level.enemies.forEach((enemy) => {
+                if (this.character.isColliding(enemy)) {
+                    this.chicken.hitChicken();
+
+                    console.log(this.enemy.energey);
+
+                }
+            });
+        } */
+
+    /*   checkCollisionsWithChicken() {
+          this.level.enemies.forEach((enemy) => {
+              if (this.character.isColliding(enemy) && !enemy.isDead() && !enemy.isHurt() &&
+                  !this.character.isDead() && this.character.isHurt()
+              ) {
+                  if (this.character.hit()) {
+                      this.statusBar.setPercentage(this.character.energey);
+                     console.log(this.character.energey);
+                      this.gameOver();
+                  }
+              }
+          });
+      } */
+    /*   checkCollisionsforChicken() {
+          this.character.forEach((PEPE) => {
+              if (this.chicken.isColliding(PEPE)) {
+                  this.chicken.hitChicken();
+                  this.statusBar.setPercentage(this.chicken.enemyEnergy);
+                  console.log(this.chicken.enemyEnergy);
+
+              }
+          });
+      } */
+
     checkThrowObject() {
         if (this.keyboard.D) {
-            let bottel = new ThrowableObject(this.character.x + 100, this.character.y + 100);
+            let bottel = new ThrowableObject(this.character.x + 100, this.character.y + 100, !this.character.otherDirection);
             this.throwableobjects.push(bottel);
+            this.throw = -20;
         }
+    }
+
+    checkCollisionsWithBottel() {
+        this.level.enemies.forEach((enemy) => {
+            this.throwableobjects.forEach((bottel) => {
+                if (bottel.isColliding(enemy)) {
+                    enemy.hit();
+                    console.log('is hited');
+                    setTimeout(() => {
+                        this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
+
+                    }, 300);
+
+                }
+
+            });
+        });
     }
 
     draw() {
