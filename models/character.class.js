@@ -134,12 +134,12 @@ class Character extends MoveableObject {
             /* this.hurting_sound.play(); */
         } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
             this.playAnimation(this.WALKING_IMAGES);
-            console.log(this.playInterval)
+
 
         } else if (this.isAboveGround()) {
             this.playInterval = 200;
             this.playAnimation(this.IMAGES_JUMPING);
-            console.log(this.playInterval)
+
 
         } else {
             this.sleepingCharacter();

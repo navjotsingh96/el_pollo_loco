@@ -100,7 +100,7 @@ class World {
 
                     if (bottel.isColliding(enemy) && !enemy.isDead() && !enemy.isHurt()) {
                         enemy.hit();
-                        this.deleteChicken();
+                        this.deleteChicken(enemy);
                     }
                     if (bottel.isColliding(this.endBoss)) {
                         this.endBoss.hitBoss();
@@ -116,7 +116,7 @@ class World {
         /**
          * delete chicken from Array but wait because of dead animation.
          */
-    deleteChicken() {
+    deleteChicken(enemy) {
             setTimeout(() => {
                 this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
 
