@@ -13,7 +13,7 @@ class Chicken extends MoveableObject {
         'img/4.Secuencias_Enemy_gigantขn-Doคa_Gallinota-/4.Muerte/G25.png',
         'img/4.Secuencias_Enemy_gigantขn-Doคa_Gallinota-/4.Muerte/G26.png',
     ]
-    ChcikenlastHit = 0;
+    energey = 5;
 
     constructor() {
         super().loadImage('img/4.Secuencias_Enemy_gigantขn-Doคa_Gallinota-/1.Caminata/G1.png');
@@ -24,6 +24,7 @@ class Chicken extends MoveableObject {
         this.animate();
         this.moveLeft();
         this.speed = 0.15 + Math.random() * 0.25;
+        this.energey = this.energey;
 
     }
 
@@ -41,8 +42,11 @@ class Chicken extends MoveableObject {
         }
         // If chicken hurts then play animation
     chickenHurt() {
-        if (this.isHurt()) {
+        if (this.isDead()) {
             this.playAnimation(this.HURTING_IMAGES);
+            setTimeout(() => {
+
+            }, 300);
         }
     }
 }

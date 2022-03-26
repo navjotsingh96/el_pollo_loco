@@ -6,7 +6,9 @@ class MoveableObject extends DrawableObject {
     acceleration = 0.5;
     energey = 100;
     lastHit = 0;
-    bossEnergy = 100;
+    bossEnergy = 1000;
+    deleteable = false;
+
     /**
      * @returns Applays gravity to character
      */
@@ -75,13 +77,14 @@ class MoveableObject extends DrawableObject {
         return this.energey == 0;
     }
     isBossDead() {
-            return this.bossEnergy == 0;
-        }
-        /**
-         * 
-         * @param {object} images - are the photos from all the WALKING_IMAGES Array so we can use only one function for all images, who's have to run
-         * this function animate all the images into running form
-         */
+        return this.bossEnergy == 0;
+    }
+
+    /**
+     * 
+     * @param {object} images - are the photos from all the WALKING_IMAGES Array so we can use only one function for all images, who's have to run
+     * this function animate all the images into running form
+     */
     playAnimation(images) {
         let i = this.currentImage % images.length; // % modulo gibt die Rest werte an z.B wenn das i wert von 6 erreicht hat, wird von i von 0 anfangen.
         // z.B 0 % 6 = 0, 1 1/6 = 0,1 wenn 6/6 = 1 aber wenn 7/6 = 1 ,0

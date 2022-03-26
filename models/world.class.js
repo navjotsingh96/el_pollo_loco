@@ -11,7 +11,9 @@ class World {
     game_over = new Audio('audio/gameOver.mp3');
 
     //Endboss 
-    endBoss = level1.enemies[level1.enemies.length - 1]
+    endBoss = level1.enemies[level1.enemies.length - 1];
+    chickens = level1.enemies[level1.enemies.length, 0, 3];
+
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -20,7 +22,7 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
-        console.log('this is endboss', this.endBoss);
+        console.log('this is enemys', this.chickens);
 
     }
 
@@ -32,6 +34,7 @@ class World {
             this.checkCollisions();
             this.checkThrowObject();
             this.checkCollisionsWithBottel();
+
 
         }, 50);
     }
@@ -94,17 +97,24 @@ class World {
     checkCollisionsWithBottel() {
         this.level.enemies.forEach((enemy) => {
             this.throwableobjects.forEach((bottel) => {
+
                 if (bottel.isColliding(enemy) && !enemy.isDead() && !enemy.isHurt()) {
                     enemy.hit();
-                    console.log('is hited');
+                    console.log(this.endBoss.bossEnergy);
                     setTimeout(() => {
+                        this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
 
-                    }, 300);
-                    this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
+                    }, 400);
                 }
                 if (bottel.isColliding(this.endBoss)) {
                     console.log('end boss hited');
                     this.endBoss.hitBoss();
+                    this.endBoss.x = this.endBoss.x - Math.random() * 500;
+
+                    setTimeout(() => {
+                        this.endBoss.x = 2250;
+                    }, 500);
+
                     this.statusBar.setPercentage(this.endBoss.bossEnergy);
                     console.log(this.endBoss.bossEnergy);
                 }
