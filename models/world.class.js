@@ -9,6 +9,10 @@ class World {
     statusBar = new StatusBar();
     throwableobjects = [new ThrowableObject()];
     game_over = new Audio('audio/gameOver.mp3');
+
+    //Endboss 
+    endBoss = level1.enemies[level1.enemies.length - 1]
+
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas; // canvas definiert und für unten benutzt
@@ -16,6 +20,8 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
+        console.log('this is endboss', this.endBoss);
+
     }
 
     setWorld() {
@@ -88,14 +94,19 @@ class World {
     checkCollisionsWithBottel() {
         this.level.enemies.forEach((enemy) => {
             this.throwableobjects.forEach((bottel) => {
-                if (bottel.isColliding(enemy)) {
+                if (bottel.isColliding(enemy) && !enemy.isDead() && !enemy.isHurt()) {
                     enemy.hit();
                     console.log('is hited');
                     setTimeout(() => {
-                        this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
 
                     }, 300);
-
+                    this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
+                }
+                if (bottel.isColliding(this.endBoss)) {
+                    console.log('end boss hited');
+                    this.endBoss.hitBoss();
+                    this.statusBar.setPercentage(this.endBoss.bossEnergy);
+                    console.log(this.endBoss.bossEnergy);
                 }
 
             });

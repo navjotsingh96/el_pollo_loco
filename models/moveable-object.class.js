@@ -6,7 +6,7 @@ class MoveableObject extends DrawableObject {
     acceleration = 0.5;
     energey = 100;
     lastHit = 0;
-    enemyEnergy = 100;
+    bossEnergy = 100;
     /**
      * @returns Applays gravity to character
      */
@@ -52,10 +52,10 @@ class MoveableObject extends DrawableObject {
         }
     }
 
-    hitChicken() {
-            this.enemyEnergy -= 20;
-            if (this.enemyEnergy < 0) {
-                this.enemyEnergy = 0;
+    hitBoss() {
+            this.bossEnergy -= 20;
+            if (this.bossEnergy < 0) {
+                this.bossEnergy = 0;
             } else {
                 this.lastHit = new Date().getTime();
             }
@@ -72,7 +72,10 @@ class MoveableObject extends DrawableObject {
     }
 
     isDead() {
-            return this.energey == 0;
+        return this.energey == 0;
+    }
+    isBossDead() {
+            return this.bossEnergy == 0;
         }
         /**
          * 

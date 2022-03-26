@@ -13,17 +13,26 @@ class Endboss extends MoveableObject {
         'img/4.Secuencias_Enemy_gigantขn-Doคa_Gallinota-/2.Ateciขn-ataque/1.Alerta/G11.png',
         'img/4.Secuencias_Enemy_gigantขn-Doคa_Gallinota-/2.Ateciขn-ataque/1.Alerta/G12.png'
     ];
+    HURTING_IMAGES = [
+        'img/4.Secuencias_Enemy_gigantขn-Doคa_Gallinota-/4.Muerte/G24.png',
+        'img/4.Secuencias_Enemy_gigantขn-Doคa_Gallinota-/4.Muerte/G25.png',
+        'img/4.Secuencias_Enemy_gigantขn-Doคa_Gallinota-/4.Muerte/G26.png',
+    ]
 
     constructor() {
         super();
         this.loadImages(this.WALKING_IMAGES); //it a image path
-        this.x = 1500;
+        this.x = 800;
+        this.loadImages(this.HURTING_IMAGES);
         this.animate();
 
     }
     animate() {
         setInterval(() => {
             this.playAnimation(this.WALKING_IMAGES)
+            if (this.isHurt()) {
+                this.playAnimation(this.HURTING_IMAGES);
+            }
         }, 150);
     }
 }
