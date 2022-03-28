@@ -9,6 +9,7 @@ class World {
     statusBar = new StatusBar();
     statusBossBar = new BossStatusBar();
     throwableobjects = [new ThrowableObject()];
+    /*   coins = new Coins(); */
     game_over = new Audio('audio/gameOver.mp3');
 
     //Endboss 
@@ -155,10 +156,12 @@ class World {
         this.ctx.translate(this.camera_x, 0);
 
         this.addToMap(this.character);
-
+        this.addToMap(this.statusBossBar);
         this.addObjectToMap(this.level.clouds);
         this.addObjectToMap(this.level.enemies);
+        this.addObjectToMap(this.level.coins);
         this.addObjectToMap(this.throwableobjects);
+
 
 
 

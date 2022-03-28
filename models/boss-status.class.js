@@ -1,6 +1,9 @@
 class BossStatusBar extends DrawableObject {
-    IMAGES_BOSS = [
+    IMAGE_Chicken = ['img/7.Marcadores/Icono/Mesa de trabajo 130.png',
         'img/7.Marcadores/Icono/Mesa de trabajo 130.png',
+        'img/7.Marcadores/Icono/Mesa de trabajo 130.png'
+    ];
+    IMAGES_BOSS = [
         'img/7.Marcadores/Barra/Marcador-vida/verde/0_.png',
         'img/7.Marcadores/Barra/Marcador-vida/verde/20_.png',
         'img/7.Marcadores/Barra/Marcador-vida/verde/40_.png',
@@ -9,19 +12,19 @@ class BossStatusBar extends DrawableObject {
         'img/7.Marcadores/Barra/Marcador-vida/verde/100_.png'
     ];
     percentage = 100;
+    y = 40;
+    x = 2250;
 
+    width = 200;
+    height = 60;
     constructor() {
-        super();
-        this.loadImages(this.IMAGES_BOSS);
-        this.x = 2250;
-        this.y = 90;
-        this.width = 200;
-        this.height = 60;
-        this.setPercentage(100);
-        console.log(this.x)
-    }
+            super().loadImages(this.IMAGE_Chicken);
+            this.loadImages(this.IMAGES_BOSS);
 
-    //setPercentage(50)
+            this.otherDirection = true;
+            this.setPercentage(100);
+        }
+        //setPercentage(50)
     setPercentage(percentage) {
         this.percentage = percentage;
         let path = this.IMAGES_BOSS[this.resolveImageIndex()];
