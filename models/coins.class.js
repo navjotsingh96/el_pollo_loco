@@ -8,6 +8,6 @@ class Coins extends DrawableObject {
         super().loadImage('img/8.Coin/Moneda2.png');
         this.x = x;
         this.y = y;
-
     }
+
 }

@@ -12,6 +12,8 @@ class World {
     throwableobjects = [new ThrowableObject()];
     /*   coins = new Coins(); */
     game_over = new Audio('audio/gameOver.mp3');
+    coin_sound = new Audio('audio/coin.mp3');
+    dead_sound = new Audio('audio/chciken.mp3');
 
     //Endboss 
     endBoss = level1.enemies[level1.enemies.length - 1];
@@ -24,7 +26,7 @@ class World {
         this.keyboard = keyboard
         this.draw();
         this.setWorld();
-        this.run();
+        this.checkCollisionsWithAll();
         console.log('this is enemys', this.chickens);
 
     }
@@ -32,16 +34,16 @@ class World {
     setWorld() {
         this.character.world = this;
     }
-    run() {
+    checkCollisionsWithAll() {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrowObject();
             this.checkCollisionsWithBottel();
-            this.checkCollisionWithCoins();
             this.takeBottels();
-
-
         }, 50);
+        setInterval(() => {
+            this.checkCollisionWithCoins();
+        }, 0.5);
     }
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
@@ -59,6 +61,7 @@ class World {
             if (this.character.isColliding(coin)) {
                 this.character.hitCoin();
                 //Sound
+                this.coin_sound.play();
                 this.level.coins.splice(this.level.coins.indexOf(coin), 1);
 
             }
@@ -141,6 +144,7 @@ class World {
          * delete chicken from Array but wait because of dead animation.
          */
     deleteChicken(enemy) {
+            /*  this.dead_sound.play(); */
             setTimeout(() => {
                 this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
 
