@@ -7,6 +7,7 @@ class World {
     keyboard;
     camera_x = -100;
     statusBar = new StatusBar();
+    coinBar = new Coinbar();
     statusBossBar = new BossStatusBar();
     throwableobjects = [new ThrowableObject()];
     /*   coins = new Coins(); */
@@ -59,7 +60,6 @@ class World {
                 //Sound
                 this.level.coins.splice(this.level.coins.indexOf(coin), 1);
 
-                console.log('coins', this.character.coinsCount);
             }
         });
     }
@@ -145,7 +145,9 @@ class World {
                 this.endBoss.x = 2250;
             }, 500);
             this.statusBossBar.setPercentage(this.endBoss.bossEnergy);
-
+            if (this.endBoss.bossEnergy == 0) {
+                this.endBoss.x = 2250;
+            }
         }
         /**
          * delete Boss from Array but wait because of dead animation.
@@ -164,12 +166,13 @@ class World {
 
 
         this.ctx.translate(-this.camera_x, 0);
-        // ----- Space for firxed Objects---
+        // ----- Space for fixed Objects---
         this.addToMap(this.statusBar);
         this.ctx.translate(this.camera_x, 0);
-
         this.addToMap(this.character);
         this.addToMap(this.statusBossBar);
+        /* this.addToMap(this.coinBar); */
+
         this.addObjectToMap(this.level.clouds);
         this.addObjectToMap(this.level.enemies);
         this.addObjectToMap(this.level.coins);
