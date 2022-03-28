@@ -7,6 +7,7 @@ class World {
     keyboard;
     camera_x = -100;
     statusBar = new StatusBar();
+    statusBossBar = new BossStatusBar();
     throwableobjects = [new ThrowableObject()];
     game_over = new Audio('audio/gameOver.mp3');
 
@@ -130,7 +131,7 @@ class World {
             setTimeout(() => {
                 this.endBoss.x = 2250;
             }, 500);
-            this.statusBar.setPercentage(this.endBoss.bossEnergy);
+            this.statusBossBar.setPercentage(this.endBoss.bossEnergy);
 
         }
         /**
