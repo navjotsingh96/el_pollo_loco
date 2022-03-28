@@ -38,6 +38,7 @@ class World {
             this.checkThrowObject();
             this.checkCollisionsWithBottel();
             this.checkCollisionWithCoins();
+            this.takeBottels();
 
 
         }, 50);
@@ -62,6 +63,15 @@ class World {
 
             }
         });
+    }
+    takeBottels() {
+        this.level.bottels.forEach((bottel) => {
+            if (this.character.isColliding(bottel)) {
+                this.character.hitBottel();
+                this.level.bottels.splice(this.level.bottels.indexOf(bottel), 1);
+                console.log(this.character.bottelCount)
+            }
+        })
     }
 
     /* 

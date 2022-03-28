@@ -7,6 +7,7 @@ class MoveableObject extends DrawableObject {
     energey = 100;
     lastHit = 0;
     coinsCount = 0;
+    bottelCount = 0;
     bossEnergy = 100;
     deleteable = false;
 
@@ -87,6 +88,12 @@ class MoveableObject extends DrawableObject {
             this.coinsCount = 100;
         }
 
+    }
+    hitBottel() {
+        this.bottelCount += 20;
+        if (this.bottelCount < 0) {
+            this.bottelCount = 0;
+        }
     }
 
     /**
