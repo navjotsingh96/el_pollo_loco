@@ -36,6 +36,7 @@ class World {
             this.checkCollisions();
             this.checkThrowObject();
             this.checkCollisionsWithBottel();
+            this.checkCollisionWithCoins();
 
 
         }, 50);
@@ -48,6 +49,17 @@ class World {
                 /*  console.log(this.character.energey);
                  this.gameOver(); */
 
+            }
+        });
+    }
+    checkCollisionWithCoins() {
+        this.level.coins.forEach((coin) => {
+            if (this.character.isColliding(coin)) {
+                this.character.hitCoin();
+                //Sound
+                this.level.coins.splice(this.level.coins.indexOf(coin), 1);
+
+                console.log('coins', this.character.coinsCount);
             }
         });
     }
@@ -143,6 +155,7 @@ class World {
             this.level.enemies.splice(this.endBoss);
         }, 2000);
     }
+
 
     draw() {
         this.ctx.clearRect(0, 0, canvas.width, canvas.height); // to clear the canvas from the x sonst it makes duplicate

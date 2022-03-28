@@ -6,6 +6,7 @@ class MoveableObject extends DrawableObject {
     acceleration = 0.5;
     energey = 100;
     lastHit = 0;
+    coinsCount = 0;
     bossEnergy = 100;
     deleteable = false;
 
@@ -78,6 +79,14 @@ class MoveableObject extends DrawableObject {
     }
     isBossDead() {
         return this.bossEnergy == 0;
+    }
+
+    hitCoin() {
+        this.coinsCount += 10;
+        if (this.coinsCount > 100) {
+            this.coinsCount = 100;
+        }
+
     }
 
     /**

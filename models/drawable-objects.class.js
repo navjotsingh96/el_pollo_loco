@@ -27,7 +27,7 @@ class DrawableObject {
      * instanceof used only for specific objects that i want to show, apart of will not been shown
      */
     drawFrames(ctx) {
-        if (this instanceof Character || this instanceof Chicken || this instanceof Endboss) {
+        if (this instanceof Character || this instanceof Chicken || this instanceof Endboss || this instanceof Coins) {
             ctx.beginPath();
             ctx.lineWidth = '3';
             ctx.strokeStyle = 'red';
