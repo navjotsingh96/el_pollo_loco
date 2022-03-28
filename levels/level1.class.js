@@ -49,11 +49,22 @@ let level1 = new Level(
         new BackgroundObject('img/5.Fondo/Capas/2.Fondo2/1.png', 719 * 4),
         new BackgroundObject('img/5.Fondo/Capas/1.suelo-fondo1/1.png', 719 * 4),
     ], [
-        new Coins(240, 170),
-        new Coins(250, 170),
-        new Coins(270, 180),
-        new Coins(290, 190),
-        new Coins(270, 200),
-        new Coins(250, 210)
+        new Coins(190, 300),
+        new Coins(250, 250),
+        new Coins(300, 200),
+        new Coins(350, 200),
+        new Coins(400, 250),
+        new Coins(450, 300),
+
+        new Coins(800, 300),
+        new Coins(850, 250),
+        new Coins(910, 200),
+        new Coins(950, 200),
+        new Coins(1000, 250),
+        new Coins(1050, 300)
+
+
+
+
     ]
 );
