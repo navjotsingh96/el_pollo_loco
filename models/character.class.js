@@ -142,7 +142,6 @@ class Character extends MoveableObject {
 
 
         } else if (this.isAboveGround()) {
-            this.playInterval = 200;
             this.playAnimation(this.IMAGES_JUMPING);
 
 
@@ -166,5 +165,6 @@ class Character extends MoveableObject {
             console.log(this.world.keyboard.M);
         }
     }
+
 
 }

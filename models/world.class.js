@@ -49,6 +49,7 @@ class World {
             this.checkThrowObject();
             this.checkCollisionsWithBottel();
             this.takeBottels();
+            this.checkoverHEAD();
         }, 50);
         setInterval(() => {
             this.checkCollisionWithCoins();
@@ -85,6 +86,17 @@ class World {
             }
         })
     }
+
+    /*  checkoverHEAD(enemy) {
+         this.level.enemies.forEach((enemy) => {
+
+             if (this.character.isOverHead(enemy)) {
+                 enemy.energy = 0;
+                 this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1)
+
+             }
+         })
+     } */
 
 
 

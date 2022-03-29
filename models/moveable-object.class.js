@@ -95,6 +95,8 @@ class MoveableObject extends DrawableObject {
         }
     }
 
+
+
     /**
      * 
      * @param {object} images - are the photos from all the WALKING_IMAGES Array so we can use only one function for all images, who's have to run
