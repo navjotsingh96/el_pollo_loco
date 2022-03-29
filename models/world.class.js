@@ -80,10 +80,11 @@ class World {
 
 
     checkThrowObject() {
-        if (this.keyboard.D) {
+        if (this.keyboard.D && this.character.bottelCount > 0) {
             let bottel = new ThrowableObject(this.character.x + 100, this.character.y + 100, !this.character.otherDirection);
             this.throwableobjects.push(bottel);
-            this.throw = -20;
+            this.character.bottelCount -= 10;
+            this.bottelBar.setPercentage(this.character.bottelCount);
         }
     }
 
