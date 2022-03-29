@@ -69,7 +69,7 @@ class Character extends MoveableObject {
     walking_sound = new Audio('audio/running.mp3');
     jumping_sound = new Audio('audio/jumping.mp3');
     hurting_sound = new Audio('audio/ouch.mp3');
-    bgr_music = new Audio('audio/gameSound.mp3');
+    bgr_music = new Audio('audio/backgroundmusic.mp3');
     sleep_sound = new Audio('audio/sleeping.mp3');
     playInterval = 100;
     coinsCount = 0;
@@ -86,6 +86,7 @@ class Character extends MoveableObject {
         this.loadImages(this.IMAGES_BOARING);
         this.animate();
         this.applyGravity();
+        console.log(this.lastMove);
 
 
     }
@@ -103,21 +104,26 @@ class Character extends MoveableObject {
 
     characterMoving() {
         this.walking_sound.pause();
-        /*    this.bgr_music.play();
-           this.sleep_sound.pause();
-           this.bgr_music.volume = 0.2; */
+        this.bgr_music.play();
+        this.sleep_sound.pause();
+        this.bgr_music.volume = 0.2;
         if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
             this.moveRight();
             this.walking_sound.play();
+            this.lastMove = new Date().getTime();
         }
         if (this.world.keyboard.LEFT && this.x > 0) {
             this.moveLeft();
             this.walking_sound.play();
+            this.lastMove = new Date().getTime();
         }
 
         if (this.world.keyboard.UP && !this.isAboveGround()) {
             this.jump();
             this.jumping_sound.play();
+            this.lastMove = new Date().getTime();
+
+
 
         }
         if (this.world.keyboard.M) {
@@ -153,10 +159,10 @@ class Character extends MoveableObject {
         if (this.firstMove > 2000) {
             this.playAnimation(this.IMAGES_BOARING);
         }
-        /*   if (this.firstMove > 5000) {
-              this.playAnimation(this.IMAGES_SLEEPING);
-               this.sleep_sound.play();
-          } */
+        if (this.firstMove > 5000) {
+            this.playAnimation(this.IMAGES_SLEEPING);
+            this.sleep_sound.play();
+        }
     }
 
 }
