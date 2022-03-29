@@ -18,12 +18,8 @@ canvas {
     top: 0;
 }
 
-#startScreen:hover {
-    cursor: pointer;
-}
-
 .d-none {
-    display: none;
+    display: none !important;
 }
 
 .key-details {
@@ -33,4 +29,30 @@ canvas {
     flex-wrap: wrap;
     width: 720px;
     margin-top: 20px;
+}
+
+.btn-cont {
+    position: relative;
+    top: 445px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    position: absolute;
+    width: 160px;
+    height: 50px;
+    background-color: #ffcf10b2;
+    border: navajowhite;
+    cursor: pointer;
+    transition: all 225ms ease-in-out;
+    font-size: 16px;
+}
+
+.btn:hover {
+    transition: 225ms ease-in-out;
+    background-color: #ffcf10e0;
+    transform: translateY(-12px);
+    box-shadow: 5px 10px 3px 0px #ffcf10b2;
 }

@@ -4,6 +4,7 @@ let keyborad = new Keyboard();
 
 function startGame() {
     document.getElementById('startScreen').classList.add('d-none');
+    document.getElementById('btn-cont').classList.add('d-none');
     init();
 }
 
