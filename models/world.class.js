@@ -10,11 +10,13 @@ class World {
     coinBar = new Coinbar();
     bottelBar = new BottelBar();
     statusBossBar = new BossStatusBar();
+    icon = new Icons();
     throwableobjects = [new ThrowableObject()];
     game_over = new Audio('audio/gameOver.mp3');
     coin_sound = new Audio('audio/coin.mp3');
     dead_sound = new Audio('audio/chciken.mp3');
     bgr_music = new Audio('audio/backgroundmusic.mp3');
+
 
     //Endboss 
     endBoss = level1.enemies[level1.enemies.length - 1];
@@ -33,7 +35,7 @@ class World {
 
 
     playBgrMusic() {
-        this.bgr_music.play();
+        this.bgr_music.pause();
         this.bgr_music.volume = 0.2;
 
     }
@@ -163,6 +165,7 @@ class World {
 
         this.addToMap(this.character);
         this.addToMap(this.statusBossBar);
+        this.addToMap(this.icon);
         /* this.addToMap(this.coinBar); */
 
         this.addObjectToMap(this.level.clouds);
