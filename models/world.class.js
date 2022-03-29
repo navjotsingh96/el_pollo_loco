@@ -8,6 +8,7 @@ class World {
     camera_x = -100;
     statusBar = new StatusBar();
     coinBar = new Coinbar();
+    bottelBar = new BottelBar();
     statusBossBar = new BossStatusBar();
     throwableobjects = [new ThrowableObject()];
     /*   coins = new Coins(); */
@@ -60,6 +61,7 @@ class World {
         this.level.coins.forEach((coin) => {
             if (this.character.isColliding(coin)) {
                 this.character.hitCoin();
+                this.coinBar.setPercentage(this.character.coinsCount);
                 //Sound
                 this.coin_sound.play();
                 this.level.coins.splice(this.level.coins.indexOf(coin), 1);
@@ -182,7 +184,11 @@ class World {
         this.ctx.translate(-this.camera_x, 0);
         // ----- Space for fixed Objects---
         this.addToMap(this.statusBar);
+        this.addToMap(this.bottelBar);
+        this.addToMap(this.coinBar);
         this.ctx.translate(this.camera_x, 0);
+        // ----- Space for fixed Objects Till here---
+
         this.addToMap(this.character);
         this.addToMap(this.statusBossBar);
         /* this.addToMap(this.coinBar); */

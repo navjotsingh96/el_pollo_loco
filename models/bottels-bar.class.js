@@ -1,24 +1,24 @@
-class Coinbar extends DrawableObject {
+class BottelBar extends DrawableObject {
     IMAGES = [
-        'img/7.Marcadores/Barra/Marcador-moneda/azul/0_.png',
-        'img/7.Marcadores/Barra/Marcador-moneda/azul/20_.png',
-        'img/7.Marcadores/Barra/Marcador-moneda/azul/40_.png',
-        'img/7.Marcadores/Barra/Marcador-moneda/azul/60_.png',
-        'img/7.Marcadores/Barra/Marcador-moneda/azul/80_.png',
-        'img/7.Marcadores/Barra/Marcador-moneda/azul/100_.png'
-
+        'img/7.Marcadores/Barra/Marcador_botella/Azul/0_.png',
+        'img/7.Marcadores/Barra/Marcador_botella/Azul/20_.png',
+        'img/7.Marcadores/Barra/Marcador_botella/Azul/40_.png',
+        'img/7.Marcadores/Barra/Marcador_botella/Azul/60_.png',
+        'img/7.Marcadores/Barra/Marcador_botella/Azul/80_.png',
+        'img/7.Marcadores/Barra/Marcador_botella/Azul/100_.png',
     ];
 
-    percentage = 0;
+
+    percentage = 100;
 
     constructor() {
         super();
         this.loadImages(this.IMAGES);
         this.x = 30;
-        this.y = 120;
+        this.y = 70;
         this.width = 200;
         this.height = 60;
-        this.setPercentage(0);
+        this.setPercentage(100);
 
     }
 

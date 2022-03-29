@@ -6,8 +6,7 @@ class MoveableObject extends DrawableObject {
     acceleration = 0.5;
     energey = 100;
     lastHit = 0;
-    coinsCount = 0;
-    bottelCount = 0;
+
     bossEnergy = 100;
     deleteable = false;
 

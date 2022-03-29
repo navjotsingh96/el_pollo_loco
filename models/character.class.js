@@ -1,8 +1,5 @@
 class Character extends MoveableObject {
-    y = 30;
-    height = 300;
-    width = 170;
-    speed = 7;
+
     WALKING_IMAGES = [
         'img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-21.png',
         'img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-22.png',
@@ -63,6 +60,10 @@ class Character extends MoveableObject {
         'img/2.Secuencias_Personaje-Pepe-correcciขn/1.IDLE/LONG_IDLE/I-19.png',
         'img/2.Secuencias_Personaje-Pepe-correcciขn/1.IDLE/LONG_IDLE/I-20.png'
     ];
+    y = 30;
+    height = 300;
+    width = 170;
+    speed = 7;
     world;
     lastMove = new Date().getTime();
     walking_sound = new Audio('audio/running.mp3');
@@ -71,6 +72,8 @@ class Character extends MoveableObject {
     bgr_music = new Audio('audio/gameSound.mp3');
     sleep_sound = new Audio('audio/sleeping.mp3');
     playInterval = 100;
+    coinsCount = 0;
+    bottelCount = 0;
 
 
     constructor() {
