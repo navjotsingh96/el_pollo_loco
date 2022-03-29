@@ -6,9 +6,9 @@ class MoveableObject extends DrawableObject {
     acceleration = 0.5;
     energey = 100;
     lastHit = 0;
-
     bossEnergy = 100;
     deleteable = false;
+    groundPos = 140;
 
     /**
      * @returns Applays gravity to character
@@ -27,11 +27,11 @@ class MoveableObject extends DrawableObject {
      * @returns if the character in air is or not
      */
     isAboveGround() {
-            if (this instanceof ThrowableObject) {
-                return true
-            } else {
-                return this.y < 140
-            }
+
+        return this.y < this.groundPos;
+    }
+    onGround() {
+            return this.y == this.groundPos;
         }
         /**
          * @returns is Character. is colliding with chicken?

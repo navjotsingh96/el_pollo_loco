@@ -62,10 +62,8 @@ class World {
             if (this.character.isColliding(coin)) {
                 this.character.hitCoin();
                 this.coinBar.setPercentage(this.character.coinsCount);
-                //Sound
                 this.coin_sound.play();
                 this.level.coins.splice(this.level.coins.indexOf(coin), 1);
-
             }
         });
     }
@@ -73,47 +71,13 @@ class World {
         this.level.bottels.forEach((bottel) => {
             if (this.character.isColliding(bottel)) {
                 this.character.hitBottel();
+                this.bottelBar.setPercentage(this.character.bottelCount);
                 this.level.bottels.splice(this.level.bottels.indexOf(bottel), 1);
-                console.log(this.character.bottelCount)
             }
         })
     }
 
-    /* 
-        checkCollisionsChicken() {
-            this.level.enemies.forEach((enemy) => {
-                if (this.character.isColliding(enemy)) {
-                    this.chicken.hitChicken();
 
-                    console.log(this.enemy.energey);
-
-                }
-            });
-        } */
-
-    /*   checkCollisionsWithChicken() {
-          this.level.enemies.forEach((enemy) => {
-              if (this.character.isColliding(enemy) && !enemy.isDead() && !enemy.isHurt() &&
-                  !this.character.isDead() && this.character.isHurt()
-              ) {
-                  if (this.character.hit()) {
-                      this.statusBar.setPercentage(this.character.energey);
-                     console.log(this.character.energey);
-                      this.gameOver();
-                  }
-              }
-          });
-      } */
-    /*   checkCollisionsforChicken() {
-          this.character.forEach((PEPE) => {
-              if (this.chicken.isColliding(PEPE)) {
-                  this.chicken.hitChicken();
-                  this.statusBar.setPercentage(this.chicken.enemyEnergy);
-                  console.log(this.chicken.enemyEnergy);
-
-              }
-          });
-      } */
 
     checkThrowObject() {
         if (this.keyboard.D) {
