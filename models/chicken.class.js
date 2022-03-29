@@ -14,12 +14,12 @@ class Chicken extends MoveableObject {
         'img/4.Secuencias_Enemy_gigantขn-Doคa_Gallinota-/4.Muerte/G26.png',
     ]
     energey = 5;
-
+    dead_audio = new Audio('audio/chickenDead.mp3');
     constructor() {
         super().loadImage('img/4.Secuencias_Enemy_gigantขn-Doคa_Gallinota-/1.Caminata/G1.png');
         this.loadImages(this.WALKING_IMAGES); //it a image path
         this.loadImages(this.HURTING_IMAGES);
-        this.x = 300 + Math.random() * 500; //für random platzierung  math zahl gibt wert zwischen 0 und 1 und dann wird mit  500*
+        this.x = 500 + Math.random() * 500; //für random platzierung  math zahl gibt wert zwischen 0 und 1 und dann wird mit  500*
         this.y = 320;
         this.animate();
         this.moveLeft();
@@ -29,6 +29,7 @@ class Chicken extends MoveableObject {
     }
 
     animate() {
+            this.dead_audio.pause();
             setInterval(() => {
                 this.moveLeft();
                 this.otherDirection = false;
@@ -42,6 +43,7 @@ class Chicken extends MoveableObject {
         }
         // If chicken hurts then play animation
     chickenHurt() {
+
         if (this.isDead()) {
             this.playAnimation(this.HURTING_IMAGES);
             setTimeout(() => {

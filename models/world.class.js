@@ -71,6 +71,7 @@ class World {
         this.level.bottels.forEach((bottel) => {
             if (this.character.isColliding(bottel)) {
                 this.character.hitBottel();
+                new Audio('audio/bottelTake.mp3').play();
                 this.bottelBar.setPercentage(this.character.bottelCount);
                 this.level.bottels.splice(this.level.bottels.indexOf(bottel), 1);
             }
