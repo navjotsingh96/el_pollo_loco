@@ -11,10 +11,10 @@ class World {
     bottelBar = new BottelBar();
     statusBossBar = new BossStatusBar();
     throwableobjects = [new ThrowableObject()];
-    /*   coins = new Coins(); */
     game_over = new Audio('audio/gameOver.mp3');
     coin_sound = new Audio('audio/coin.mp3');
     dead_sound = new Audio('audio/chciken.mp3');
+    bgr_music = new Audio('audio/backgroundmusic.mp3');
 
     //Endboss 
     endBoss = level1.enemies[level1.enemies.length - 1];
@@ -28,7 +28,13 @@ class World {
         this.draw();
         this.setWorld();
         this.checkCollisionsWithAll();
-        console.log('this is enemys', this.chickens);
+        this.playBgrMusic();
+    }
+
+
+    playBgrMusic() {
+        this.bgr_music.play();
+        this.bgr_music.volume = 0.2;
 
     }
 
@@ -51,8 +57,8 @@ class World {
             if (this.character.isColliding(enemy)) {
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energey);
-                /*  console.log(this.character.energey);
-                 this.gameOver(); */
+                console.log(this.character.energey);
+                this.gameOver();
 
             }
         });
@@ -222,6 +228,7 @@ class World {
     gameOver() {
         if (this.character.energey == 0) {
             this.game_over.play();
+            this.bgr_music.pause();
 
             setTimeout(() => {
                 let canavs = document.getElementById('canvas');

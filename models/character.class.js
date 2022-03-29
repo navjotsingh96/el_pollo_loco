@@ -69,7 +69,7 @@ class Character extends MoveableObject {
     walking_sound = new Audio('audio/running.mp3');
     jumping_sound = new Audio('audio/jumping.mp3');
     hurting_sound = new Audio('audio/ouch.mp3');
-    bgr_music = new Audio('audio/backgroundmusic.mp3');
+
     sleep_sound = new Audio('audio/sleeping.mp3');
     playInterval = 100;
     coinsCount = 0;
@@ -104,9 +104,8 @@ class Character extends MoveableObject {
 
     characterMoving() {
         this.walking_sound.pause();
-        this.bgr_music.play();
+
         this.sleep_sound.pause();
-        this.bgr_music.volume = 0.2;
         if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
             this.moveRight();
             this.walking_sound.play();
@@ -125,9 +124,6 @@ class Character extends MoveableObject {
 
 
 
-        }
-        if (this.world.keyboard.M) {
-            this.bgr_music.pause();
         }
         this.world.camera_x = -this.x + 80;
     }
@@ -162,6 +158,12 @@ class Character extends MoveableObject {
         if (this.firstMove > 5000) {
             this.playAnimation(this.IMAGES_SLEEPING);
             this.sleep_sound.play();
+        }
+    }
+    setBgrMute() {
+        if (this.world.keyboard.M) {
+            this.bgr_music.pause();
+            console.log(this.world.keyboard.M);
         }
     }
 
