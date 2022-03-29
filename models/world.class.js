@@ -16,6 +16,7 @@ class World {
     coin_sound = new Audio('audio/coin.mp3');
     dead_sound = new Audio('audio/chciken.mp3');
     bgr_music = new Audio('audio/backgroundmusic.mp3');
+    you_win = new Audio('audio/onloadMusic.mp3');
 
 
     //Endboss 
@@ -49,7 +50,6 @@ class World {
             this.checkThrowObject();
             this.checkCollisionsWithBottel();
             this.takeBottels();
-            this.checkoverHEAD();
         }, 50);
         setInterval(() => {
             this.checkCollisionWithCoins();
@@ -60,7 +60,6 @@ class World {
             if (this.character.isColliding(enemy)) {
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energey);
-                console.log(this.character.energey);
                 this.gameOver();
 
             }
@@ -149,6 +148,7 @@ class World {
             this.statusBossBar.setPercentage(this.endBoss.bossEnergy);
             if (this.endBoss.bossEnergy == 0) {
                 this.endBoss.x = 2250;
+                this.youWin();
             }
         }
         /**
@@ -250,6 +250,18 @@ class World {
                 canavs.classList.add('d-none');
                 document.getElementById('endScreen').classList.remove('d-none');
             }, 5000);
+        }
+    }
+    youWin() {
+        if (this.endBoss.bossEnergy == 0) {
+            this.bgr_music.pause();
+            setTimeout(() => {
+                let canavs = document.getElementById('canvas');
+                document.getElementById('winScreen').classList.remove('d-none');
+                this.you_win.play();
+
+            }, 5000);
+
         }
     }
 }

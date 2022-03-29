@@ -34,15 +34,18 @@
 
 <body>
     <h1>El Pollo Loco</h1>
-    <div style="position: relative; display: flex; justify-content: center;">
+    <div class="container">
         <img id="startScreen" src="img/9.Intro _ Outro Image/Start Screen/Opciขn 1.png">
 
         <div id="btn-cont" class="btn-cont">
             <button onclick="startGame()" class="btn">Start</button>
         </div>
     </div>
-    <div style="position: relative; display: flex; justify-content: center;" onclick="restartGame()">
-        <img id="endScreen" class="d-none" src="img/9.Intro _ Outro Image/_Game over_ screen/3.Game over.png">
+    <div class="container" onclick="restartGame()">
+        <img class="d-none" id="endScreen" src="img/9.Intro _ Outro Image/_Game over_ screen/3.Game over.png">
+        <div class="winScreen d-none" id="winScreen">
+            <h2><b> YOU <br> WIN </b></h2>
+        </div>
     </div>
 
 
@@ -60,6 +63,7 @@
             <h3>D = Throw Bottels</h3>
         </div>
     </div>
+    <div onclick="fullscreen()">Fullscreen</div>
 </body>
 
 </html>

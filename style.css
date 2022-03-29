@@ -5,11 +5,17 @@ body {
     flex-direction: column;
     height: 100vh;
     background-image: url('img/9.Intro _ Outro Image/Start Screen/desert-5058612_1920.jpg');
-    object-fit: contain;
+    background-size: cover;
 }
 
 canvas {
     background-color: black;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 #startScreen,
@@ -57,4 +63,15 @@ canvas {
     background-color: #ffcf10e0;
     transform: translateY(-12px);
     box-shadow: 5px 10px 3px 0px #ffcf10b2;
+}
+
+.winScreen {
+    position: absolute;
+    width: 720px;
+    height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 75px;
+    color: #ffcd00;
 }

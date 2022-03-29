@@ -1,6 +1,8 @@
 let canvas;
 let world;
 let keyborad = new Keyboard();
+var canvasW = 640;
+var canvasH = 480;
 
 function startGame() {
     document.getElementById('startScreen').classList.add('d-none');
@@ -12,6 +14,10 @@ function init() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyborad);
 
+}
+
+function fullscreen() {
+    canvas.requestFullscreen();
 }
 window.addEventListener("keydown", (e) => {
     if (e.keyCode == 38) {

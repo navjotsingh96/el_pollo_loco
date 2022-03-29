@@ -36,6 +36,9 @@ class Endboss extends MoveableObject {
         this.animate();
     }
     animate() {
+        this.hurting_audio.pause();
+        this.chicken_dead.pause();
+
         setInterval(() => {
             this.hurting_audio.pause();
             this.chicken_dead.pause();
