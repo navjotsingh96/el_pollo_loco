@@ -86,9 +86,6 @@ class Character extends MoveableObject {
         this.loadImages(this.IMAGES_BOARING);
         this.animate();
         this.applyGravity();
-        console.log(this.lastMove);
-
-
     }
     animate() {
         setInterval(() => {
@@ -121,9 +118,6 @@ class Character extends MoveableObject {
             this.jump();
             this.jumping_sound.play();
             this.lastMove = new Date().getTime();
-
-
-
         }
         this.world.camera_x = -this.x + 80;
     }
@@ -144,7 +138,8 @@ class Character extends MoveableObject {
         } else if (this.isAboveGround()) {
             this.playAnimation(this.IMAGES_JUMPING);
 
-
+        } else if (this.y == 145.5) {
+            this.playAnimation(this.IMAGES_BOARING);
         } else {
             this.sleepingCharacter();
         }

@@ -27,8 +27,11 @@ class MoveableObject extends DrawableObject {
      * @returns if the character in air is or not
      */
     isAboveGround() {
-
-        return this.y < this.groundPos;
+        if (this instanceof ThrowableObject) {
+            return true
+        } else {
+            return this.y < 140
+        }
     }
     onGround() {
             return this.y == this.groundPos;
