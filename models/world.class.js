@@ -12,12 +12,15 @@ class World {
     statusBossBar = new BossStatusBar();
     icon = new Icons();
     throwableobjects = [new ThrowableObject()];
+
+    //Audios
     game_over = new Audio('audio/gameOver.mp3');
     coin_sound = new Audio('audio/coin.mp3');
     dead_sound = new Audio('audio/chciken.mp3');
     bgr_music = new Audio('audio/backgroundmusic.mp3');
     you_win = new Audio('audio/onloadMusic.mp3');
     chicken_dead = new Audio('audio/chciken.mp3');
+    dead_audio = new Audio('audio/chickenDead.mp3');
 
 
     //Endboss 
@@ -103,6 +106,8 @@ class World {
                     if (bottel.isColliding(enemy) && !enemy.isHurt()) {
                         enemy.hit();
                         if (enemy.isDead()) {
+                            this.dead_audio.play();
+
                             this.deleteChicken(enemy);
                         }
                     }
@@ -235,23 +240,24 @@ class World {
         if (this.character.energey == 0) {
             this.game_over.play();
             this.bgr_music.pause();
+            this.keyboard = false;
+
             setTimeout(() => {
                 document.getElementById('endScreen').classList.remove('d-none');
                 document.getElementById('restartBtn').classList.remove('d-none');
 
-            }, 4000);
+            }, 1050);
         }
     }
     youWin() {
         if (this.endBoss.bossEnergy == 0) {
             this.bgr_music.pause();
+            this.keyboard = false;
             setTimeout(() => {
                 document.getElementById('winScreen').classList.remove('d-none');
                 document.getElementById('restartBtn').classList.remove('d-none');
-
                 this.you_win.play();
-
-            }, 5000);
+            }, 1050);
 
         }
     }

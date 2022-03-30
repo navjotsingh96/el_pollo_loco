@@ -64,6 +64,11 @@ h3 {
     font-size: 16px;
 }
 
+.btn a {
+    text-decoration: none;
+    color: black;
+}
+
 .btn:hover {
     transition: 225ms ease-in-out;
     background-color: #ffcf10e0;

@@ -14,7 +14,7 @@ class Chicken extends MoveableObject {
         'img/4.Secuencias_Enemy_gigantขn-Doคa_Gallinota-/4.Muerte/G26.png',
     ]
     energey = 5;
-    dead_audio = new Audio('audio/chickenDead.mp3');
+
     constructor() {
         super().loadImage('img/4.Secuencias_Enemy_gigantขn-Doคa_Gallinota-/1.Caminata/G1.png');
         this.loadImages(this.WALKING_IMAGES); //it a image path
@@ -29,7 +29,7 @@ class Chicken extends MoveableObject {
     }
 
     animate() {
-            this.dead_audio.pause();
+
             setInterval(() => {
                 this.moveLeft();
                 this.otherDirection = false;
@@ -46,9 +46,7 @@ class Chicken extends MoveableObject {
 
         if (this.isDead()) {
             this.playAnimation(this.HURTING_IMAGES);
-            setTimeout(() => {
-
-            }, 300);
         }
+
     }
 }

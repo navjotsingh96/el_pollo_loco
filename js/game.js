@@ -16,13 +16,6 @@ function init() {
     level1 = getLevel1();
 }
 
-function restartGame() {
-    document.getElementById('canvas').classList.remove('d-none');
-    document.getElementById('endScreen').classList.add('d-none');
-    document.getElementById('restartBtn').classList.add('d-none');
-    document.getElementById('winScreen').classList.add('d-none');
-    startGame();
-}
 
 function fullscreen() {
     canvas.requestFullscreen();
