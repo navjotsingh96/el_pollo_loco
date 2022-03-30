@@ -41,8 +41,12 @@
             <button onclick="startGame()" class="btn">Start</button>
         </div>
     </div>
-    <div class="container" onclick="restartGame()">
+    <div class="container">
         <img class="d-none" id="endScreen" src="img/9.Intro _ Outro Image/_Game over_ screen/3.Game over.png">
+        <div id="restartBtn" class=" btn-cont d-none">
+            <button class="btn" onclick="restartGame()">Restart </button>
+        </div>
+
         <div class="winScreen d-none" id="winScreen">
             <h2><b> YOU <br> WIN </b></h2>
         </div>
@@ -63,7 +67,11 @@
             <h3>D = Throw Bottels</h3>
         </div>
     </div>
-    <div onclick="fullscreen()">Fullscreen</div>
+    <div>
+        <button onclick="fullscreen()" class="btn-full"> 
+            Fullscreen
+        </button>
+    </div>
 </body>
 
 </html>

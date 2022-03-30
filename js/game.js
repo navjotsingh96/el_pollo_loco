@@ -16,6 +16,15 @@ function init() {
 
 }
 
+function restartGame() {
+    document.getElementById('canvas').classList.remove('d-none');
+    document.getElementById('endScreen').classList.add('d-none');
+    document.getElementById('restartBtn').classList.add('d-none');
+    document.getElementById('winScreen').classList.add('d-none');
+
+    init();
+}
+
 function fullscreen() {
     canvas.requestFullscreen();
 }

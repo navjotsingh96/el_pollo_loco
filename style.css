@@ -26,6 +26,11 @@ canvas {
     top: 0;
 }
 
+h3 {
+    color: white;
+    font-size: 20px;
+}
+
 .d-none {
     display: none !important;
 }
@@ -45,6 +50,7 @@ canvas {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 3;
 }
 
 .btn {
@@ -74,4 +80,19 @@ canvas {
     justify-content: center;
     font-size: 75px;
     color: #ffcd00;
+}
+
+.btn-full {
+    width: 160px;
+    height: 50px;
+    background-color: #ffcf10;
+    border: navajowhite;
+    cursor: pointer;
+    transition: all 225ms ease-in-out;
+    font-size: 16px;
+}
+
+.btn-full:hover {
+    transition: 225ms ease-in-out;
+    background-color: #b49000;
 }

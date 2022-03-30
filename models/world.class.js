@@ -246,9 +246,9 @@ class World {
             this.bgr_music.pause();
 
             setTimeout(() => {
-                let canavs = document.getElementById('canvas');
-                canavs.classList.add('d-none');
                 document.getElementById('endScreen').classList.remove('d-none');
+                document.getElementById('restartBtn').classList.remove('d-none');
+
             }, 5000);
         }
     }
@@ -256,8 +256,9 @@ class World {
         if (this.endBoss.bossEnergy == 0) {
             this.bgr_music.pause();
             setTimeout(() => {
-                let canavs = document.getElementById('canvas');
                 document.getElementById('winScreen').classList.remove('d-none');
+                document.getElementById('restartBtn').classList.remove('d-none');
+
                 this.you_win.play();
 
             }, 5000);
