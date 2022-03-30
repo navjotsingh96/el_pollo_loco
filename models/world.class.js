@@ -21,7 +21,7 @@ class World {
 
     //Endboss 
     endBoss = level1.enemies[level1.enemies.length - 1];
-    chickens = level1.enemies[level1.enemies.length, 0, 3];
+
 
 
     constructor(canvas, keyboard) {
