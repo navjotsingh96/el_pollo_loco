@@ -112,9 +112,11 @@ class World {
             this.level.enemies.forEach((enemy) => {
                 this.throwableobjects.forEach((bottel) => {
 
-                    if (bottel.isColliding(enemy) && !enemy.isDead() && !enemy.isHurt()) {
+                    if (bottel.isColliding(enemy) && !enemy.isHurt()) {
                         enemy.hit();
-                        this.deleteChicken(enemy);
+                        if (enemy.isDead()) {
+                            this.deleteChicken(enemy);
+                        }
                     }
                     if (bottel.isColliding(this.endBoss)) {
                         this.endBoss.hitBoss();

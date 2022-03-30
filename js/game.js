@@ -13,7 +13,6 @@ function startGame() {
 function init() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyborad);
-
 }
 
 function restartGame() {
@@ -21,7 +20,6 @@ function restartGame() {
     document.getElementById('endScreen').classList.add('d-none');
     document.getElementById('restartBtn').classList.add('d-none');
     document.getElementById('winScreen').classList.add('d-none');
-
     init();
 }
 
