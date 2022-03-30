@@ -45,12 +45,13 @@ class Endboss extends MoveableObject {
             if (this.isHurt()) {
                 this.playAnimation(this.HURTING_IMAGES);
                 this.hurting_audio.play();
+
             } else if (this.isBossDead()) {
                 this.playAnimation(this.DEAD_IMAGES);
-                this.chicken_dead.play();
+
+
             } else {
                 this.playAnimation(this.WALKING_IMAGES);
-
             }
 
         }, 150);

@@ -17,6 +17,7 @@ class World {
     dead_sound = new Audio('audio/chciken.mp3');
     bgr_music = new Audio('audio/backgroundmusic.mp3');
     you_win = new Audio('audio/onloadMusic.mp3');
+    chicken_dead = new Audio('audio/chciken.mp3');
 
 
     //Endboss 
@@ -50,6 +51,7 @@ class World {
             this.checkThrowObject();
             this.checkCollisionsWithBottel();
             this.takeBottels();
+            this.gameOver();
         }, 50);
         setInterval(() => {
             this.checkCollisionWithCoins();
@@ -60,7 +62,6 @@ class World {
             if (this.character.isColliding(enemy)) {
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energey);
-                this.gameOver();
 
             }
         });
@@ -85,19 +86,6 @@ class World {
             }
         })
     }
-
-    /*  checkoverHEAD(enemy) {
-         this.level.enemies.forEach((enemy) => {
-
-             if (this.character.isOverHead(enemy)) {
-                 enemy.energy = 0;
-                 this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1)
-
-             }
-         })
-     } */
-
-
 
     checkThrowObject() {
         if (this.keyboard.D && this.character.bottelCount > 0) {
@@ -157,6 +145,7 @@ class World {
          * delete Boss from Array but wait because of dead animation.
          */
     endBossDead() {
+        this.chicken_dead.play();
         setTimeout(() => {
             this.level.enemies.splice(this.endBoss);
         }, 2000);
@@ -246,12 +235,11 @@ class World {
         if (this.character.energey == 0) {
             this.game_over.play();
             this.bgr_music.pause();
-
             setTimeout(() => {
                 document.getElementById('endScreen').classList.remove('d-none');
                 document.getElementById('restartBtn').classList.remove('d-none');
 
-            }, 5000);
+            }, 4000);
         }
     }
     youWin() {

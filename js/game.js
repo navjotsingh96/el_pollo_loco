@@ -21,7 +21,7 @@ function restartGame() {
     document.getElementById('endScreen').classList.add('d-none');
     document.getElementById('restartBtn').classList.add('d-none');
     document.getElementById('winScreen').classList.add('d-none');
-    init();
+    startGame();
 }
 
 function fullscreen() {
