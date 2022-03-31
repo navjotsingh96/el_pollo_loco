@@ -48,27 +48,27 @@ window.addEventListener("keydown", (e) => {
 
 })
 window.addEventListener("keyup", (e) => {
-    if (e.keyCode == 38) {
-        keyborad.UP = false;
-    }
-    if (e.keyCode == 40) {
-        keyborad.DOWN = false;
-    }
-    if (e.keyCode == 37) {
-        keyborad.LEFT = false;
-    }
-    if (e.keyCode == 39) {
-        keyborad.RIGHT = false;
-    }
-    if (e.keyCode == 32) {
-        keyborad.SPACE = false;
-    }
-    if (e.keyCode == 68) {
-        keyborad.D = false;
-    }
+        if (e.keyCode == 38) {
+            keyborad.UP = false;
+        }
+        if (e.keyCode == 40) {
+            keyborad.DOWN = false;
+        }
+        if (e.keyCode == 37) {
+            keyborad.LEFT = false;
+        }
+        if (e.keyCode == 39) {
+            keyborad.RIGHT = false;
+        }
+        if (e.keyCode == 32) {
+            keyborad.SPACE = false;
+        }
+        if (e.keyCode == 68) {
+            keyborad.D = false;
+        }
 
-})
-
+    })
+    /* for smartphone keys*/
 function touchDownLeft() {
     keyborad.LEFT = true;
 }
@@ -84,5 +84,23 @@ function touchDownRight() {
 
 function touchUpRight() {
     keyborad.RIGHT = false;
+
+}
+
+function touchDownJump() {
+    keyborad.UP = true;
+}
+
+function touchUpJump() {
+    keyborad.UP = false;
+
+}
+
+function touchDownThrow() {
+    keyborad.D = true;
+}
+
+function touchUpThrow() {
+    keyborad.D = false;
 
 }
