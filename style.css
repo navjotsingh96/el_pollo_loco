@@ -10,6 +10,7 @@ body {
 
 canvas {
     background-color: black;
+    display: block;
 }
 
 .container {
@@ -98,4 +99,89 @@ h3 {
 .btn-full:hover {
     transition: 225ms ease-in-out;
     background-color: #b49000;
+}
+
+
+/*Smartphone keys*/
+
+.smartphone {
+    position: relative;
+    display: none !important;
+}
+
+.left-run,
+.right-run,
+.jump,
+.bottel {
+    position: absolute;
+    font-size: 30px;
+    background-color: white;
+    border-radius: 100%;
+    padding: 10px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    justify-content: center;
+}
+
+.left-run {
+    top: -150px;
+    left: -300px;
+}
+
+.right-run {
+    top: -70px;
+    left: -300px;
+}
+
+.jump {
+    top: -150px;
+    left: 280px;
+}
+
+.bottel {
+    top: -70px;
+    left: 280px;
+}
+
+.bottel-icon {
+    width: 40px;
+    transform: rotate(30deg);
+}
+
+
+/*Smartphone*/
+
+@media only screen and (max-width: 720px) {
+    canvas,
+    .container {
+        width: 100%;
+    }
+    .responsvie {
+        display: none;
+    }
+    .key-details {
+        display: none;
+    }
+    .btn {
+        top: -126px;
+    }
+    #startScreen {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-height: 480px) {
+    canvas,
+    .container {
+        height: 100vh;
+    }
+    #startScreen {
+        height: 100vh;
+    }
+    .smartphone {
+        display: block !important;
+    }
 }

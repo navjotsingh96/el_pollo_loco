@@ -33,7 +33,9 @@
 </head>
 
 <body>
-    <h1>El Pollo Loco</h1>
+
+    <h1 class="responsvie">El Pollo Loco</h1>
+    <!--Startscrenn-->
     <div class="container">
         <img id="startScreen" src="img/9.Intro _ Outro Image/Start Screen/Opciขn 1.png">
 
@@ -41,6 +43,8 @@
             <button onclick="startGame()" class="btn">Start</button>
         </div>
     </div>
+
+    <!--Endscrenn-->
     <div class="container">
         <img class="d-none" id="endScreen" src="img/9.Intro _ Outro Image/_Game over_ screen/3.Game over.png">
         <div id="restartBtn" class=" btn-cont d-none">
@@ -52,10 +56,29 @@
         </div>
     </div>
 
+    <!--Canavs-->
 
-    <canvas id="canvas" width="720px" height="480px">
+    <canvas id="canvas" width="720px" height="480px"></canvas>
 
-    </canvas>
+    <!--Smartphone-->
+    <div class="smartphone">
+        <div class="left-run" ontouchstart="touchDownLeft()" ontouchend="touchUpLeft()">
+            &lt;
+        </div>
+        <div class="right-run" ontouchstart="touchDownRight()" ontouchend="touchUpRight()">
+            &gt;
+        </div>
+        <div class="jump">
+            &#8593;
+        </div>
+        <div class="bottel">
+            <img class="bottel-icon" src="img/bottel.png">
+        </div>
+    </div>
+
+
+    <!--Details-->
+
     <div class="key-details">
         <div class="keys">
             <h3>Left and Right Arrows = Walk</h3>
@@ -67,7 +90,10 @@
             <h3>D = Throw Bottels</h3>
         </div>
     </div>
-    <div>
+
+    <!--Fullscrenn-->
+
+    <div class="responsvie">
         <button onclick="fullscreen()" class="btn-full"> 
             Fullscreen
         </button>

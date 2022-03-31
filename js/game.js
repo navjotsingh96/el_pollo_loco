@@ -68,3 +68,21 @@ window.addEventListener("keyup", (e) => {
     }
 
 })
+
+function touchDownLeft() {
+    keyborad.LEFT = true;
+}
+
+function touchUpLeft() {
+    keyborad.LEFT = false;
+
+}
+
+function touchDownRight() {
+    keyborad.RIGHT = true;
+}
+
+function touchUpRight() {
+    keyborad.RIGHT = false;
+
+}
