@@ -7,6 +7,7 @@ var canvasH = 480;
 function startGame() {
     document.getElementById('startScreen').classList.add('d-none');
     document.getElementById('btn-cont').classList.add('d-none');
+    document.getElementById('smartphone').classList.remove('d-none');
     init();
 }
 
@@ -65,6 +66,9 @@ window.addEventListener("keyup", (e) => {
         }
         if (e.keyCode == 68) {
             keyborad.D = false;
+        }
+        if (e.keyCode == 77) {
+            keyborad.M = false;
         }
 
     })

@@ -36,12 +36,16 @@ class World {
         this.setWorld();
         this.checkCollisionsWithAll();
         this.playBgrMusic();
+        console.log(this.keyboard);
     }
 
 
     playBgrMusic() {
-        this.bgr_music.pause();
-        this.bgr_music.volume = 0.2;
+        this.bgr_music.play();
+        this.bgr_music.volume = 0.1;
+        if (this.keyboard.M == true) {
+            this.bgr_music.pause();
+        }
 
     }
 
@@ -155,7 +159,11 @@ class World {
             this.level.enemies.splice(this.endBoss);
         }, 2000);
     }
-
+    pauseMusic() {
+        if (keyboard.M) {
+            this.bgr_music.pause();
+        }
+    }
 
     draw() {
         this.ctx.clearRect(0, 0, canvas.width, canvas.height); // to clear the canvas from the x sonst it makes duplicate
