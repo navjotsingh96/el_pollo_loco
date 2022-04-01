@@ -13,8 +13,9 @@ function startGame() {
 
 function init() {
     canvas = document.getElementById('canvas');
-    world = new World(canvas, keyborad);
     level1 = getLevel1();
+
+    world = new World(canvas, keyborad);
 }
 
 

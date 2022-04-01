@@ -1,4 +1,4 @@
-let level1 = getLevel1();
+let level1;
 
 function getLevel1() {
     return new Level(

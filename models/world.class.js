@@ -36,7 +36,7 @@ class World {
         this.draw();
         this.setWorld();
         this.checkCollisionsWithAll();
-        this.playBgrMusic();
+        /* this.playBgrMusic(); */
         console.log(this.keyboard);
     }
 
