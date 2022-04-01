@@ -12,6 +12,7 @@ class World {
     statusBossBar = new BossStatusBar();
     icon = new Icons();
     throwableobjects = [new ThrowableObject()];
+    gravityInterval;
 
     //Audios
     game_over = new Audio('audio/gameOver.mp3');
@@ -109,6 +110,8 @@ class World {
 
                     if (bottel.isColliding(enemy) && !enemy.isHurt()) {
                         enemy.hit();
+                        bottel.stopInterval();
+
                         if (enemy.isDead()) {
                             this.dead_audio.play();
 
