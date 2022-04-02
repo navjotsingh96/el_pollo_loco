@@ -21,10 +21,12 @@ class MoveableObject extends DrawableObject {
             }
         }, 1000 / 60);
     }
-    stopInterval() {
+    stopGravity() {
+
         clearInterval(this.gravityInterval);
 
     }
+
 
     /**
      * 
@@ -96,19 +98,16 @@ class MoveableObject extends DrawableObject {
 
     }
     hitBottel() {
-        this.bottelCount += 20;
-        if (this.bottelCount < 0) {
-            this.bottelCount = 0;
+            this.bottelCount += 20;
+            if (this.bottelCount < 0) {
+                this.bottelCount = 0;
+            }
         }
-    }
-
-
-
-    /**
-     * 
-     * @param {object} images - are the photos from all the WALKING_IMAGES Array so we can use only one function for all images, who's have to run
-     * this function animate all the images into running form
-     */
+        /**
+         * 
+         * @param {object} images - are the photos from all the WALKING_IMAGES Array so we can use only one function for all images, who's have to run
+         * this function animate all the images into running form
+         */
     playAnimation(images) {
         let i = this.currentImage % images.length; // % modulo gibt die Rest werte an z.B wenn das i wert von 6 erreicht hat, wird von i von 0 anfangen.
         // z.B 0 % 6 = 0, 1 1/6 = 0,1 wenn 6/6 = 1 aber wenn 7/6 = 1 ,0

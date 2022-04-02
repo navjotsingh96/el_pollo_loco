@@ -110,11 +110,11 @@ class World {
 
                     if (bottel.isColliding(enemy) && !enemy.isHurt()) {
                         enemy.hit();
-                        bottel.stopInterval();
+                        bottel.stopGravity();
+                        /*  bottel.clearBotttelInterval(); */
 
                         if (enemy.isDead()) {
                             this.dead_audio.play();
-
                             this.deleteChicken(enemy);
                         }
                     }

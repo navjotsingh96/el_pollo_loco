@@ -13,8 +13,13 @@ class ThrowableObject extends MoveableObject {
         'img/6.botella/Rotaciขn/Splash de salsa/Mesa de trabajo 1 copia 11.png',
         'img/6.botella/Rotaciขn/Splash de salsa/Mesa de trabajo 1 copia 12.png'
 
-    ]
+    ];
+
     groundPos = 400;
+    broken = false;
+    clearSplash;
+    bottelGravity;
+
     constructor(x, y, otherDirection) {
         super().loadImage('img/6.botella/Rotaciขn/Mesa de trabajo 1 copia 3.png');
         this.loadImages(this.BOTTEL_IMAGES);
@@ -30,22 +35,39 @@ class ThrowableObject extends MoveableObject {
     throw () {
         this.speedY = 5;
         this.applyGravity();
-        setInterval(() => {
-            if (this.otherDirection) {
-                this.x += 15;
-            } else {
-                this.x -= 15;
-            }
-            this.y < this.groundPos;
-            if (this.y == 140) {
-                this.playAnimation(this.BOTTEL_SPLASH);
+        this.bottelSpeed();
+        this.bottelAnimations();
+
+    }
+    bottelSpeed() {
+        this.bottelGravity = setInterval(() => {
+            if (!this.broken) {
+                if (this.otherDirection) {
+                    this.x += 15;
+                } else {
+                    this.x -= 15;
+                }
             }
         }, 25);
+    }
 
-        setInterval(() => {
-            this.playAnimation(this.BOTTEL_IMAGES);
+    bottelAnimations() {
+        this.clearSplash = setInterval(() => {
+            if (this.broken == true) {
+                this.playAnimation(this.BOTTEL_SPLASH);
+            } else if (!this.broken) {
+                this.playAnimation(this.BOTTEL_IMAGES);
+            }
+        }, 200);
+    }
 
-        }, 1000 / 60);
+    stopGravity() {
+        super.stopGravity();
+        this.broken = true;
+        clearInterval(this.bottelGravity);
+        setTimeout(() => {
+            clearInterval(this.clearSplash);
+        }, 800);
     }
 
 }
