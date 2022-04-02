@@ -37,7 +37,6 @@ class ThrowableObject extends MoveableObject {
                 this.x -= 15;
             }
             this.y < this.groundPos;
-            this.bottelCount -= 20;
             if (this.y == 140) {
                 this.playAnimation(this.BOTTEL_SPLASH);
             }

@@ -28,7 +28,7 @@ class Endboss extends MoveableObject {
     hurting_audio = new Audio('audio/chickenDead.mp3');
     chicken_dead = new Audio('audio/chciken.mp3');
     constructor() {
-        super();
+        super().loadImage('img/4.Secuencias_Enemy_gigantขn-Doคa_Gallinota-/2.Ateciขn-ataque/1.Alerta/G5.png');
         this.loadImages(this.WALKING_IMAGES); //it a image path
         this.x = 2250;
         this.loadImages(this.HURTING_IMAGES);
