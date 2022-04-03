@@ -111,6 +111,7 @@ class World {
                     if (bottel.isColliding(enemy) && !enemy.isHurt()) {
                         enemy.hit();
                         bottel.stopGravity();
+                        this.deleteBottelAfterCollison(bottel);
                         /*  bottel.clearBotttelInterval(); */
 
                         if (enemy.isDead()) {
@@ -120,6 +121,8 @@ class World {
                     }
                     if (bottel.isColliding(this.endBoss)) {
                         this.endBoss.hitBoss();
+                        this.deleteBottelAfterCollison(bottel);
+
                         this.endBossHited();
                     }
                     if (this.endBoss.isBossDead()) {
@@ -128,6 +131,11 @@ class World {
 
                 });
             });
+        }
+        deleteBottelAfterCollison(bottel){
+            setTimeout(() => {
+                this.throwableobjects.splice(this.throwableobjects.indexOf(bottel), 1);
+            }, 400);
         }
         /**
          * delete chicken from Array but wait because of dead animation.
