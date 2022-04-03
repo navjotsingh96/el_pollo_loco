@@ -7,8 +7,6 @@ class MoveableObject extends DrawableObject {
     energey = 100;
     lastHit = 0;
     bossEnergy = 100;
-    deleteable = false;
-    groundPos = 140;
     gravityInterval;
     /**
      * @returns Applays gravity to character
@@ -21,13 +19,13 @@ class MoveableObject extends DrawableObject {
             }
         }, 1000 / 60);
     }
+    /**
+     * stop interval of applyhravity because of bottels
+     */
     stopGravity() {
 
         clearInterval(this.gravityInterval);
-
     }
-
-
     /**
      * 
      * @returns if the character in air is or not
@@ -39,9 +37,6 @@ class MoveableObject extends DrawableObject {
             return this.y < 140
         }
     }
-    onGround() {
-            return this.y == this.groundPos;
-        }
         /**
          * @returns is Character. is colliding with chicken?
          */
@@ -63,7 +58,9 @@ class MoveableObject extends DrawableObject {
             this.lastHit = new Date().getTime();
         }
     }
-
+    /**
+     * if endboss were hited with bottel, Bossengery will be godown.
+     */
     hitBoss() {
             this.bossEnergy -= 20;
             if (this.bossEnergy < 0) {
@@ -82,21 +79,30 @@ class MoveableObject extends DrawableObject {
 
         return timepassed < 0.5;
     }
-
+    /**
+     * @returns when energy is 0 of Character
+     */
     isDead() {
         return this.energey == 0;
     }
+    /**
+     * @returns when energy is 0 of Endboss
+     */
     isBossDead() {
         return this.bossEnergy == 0;
     }
-
+    /**
+     * @returns when character hit coin, then he collect coins
+     */
     hitCoin() {
         this.coinsCount += 10;
         if (this.coinsCount > 100) {
             this.coinsCount = 100;
         }
-
     }
+     /**
+     * @returns when character hit Bottel, then he collect bottels 
+     */
     hitBottel() {
             this.bottelCount += 20;
             if (this.bottelCount < 0) {
@@ -104,7 +110,6 @@ class MoveableObject extends DrawableObject {
             }
         }
         /**
-         * 
          * @param {object} images - are the photos from all the WALKING_IMAGES Array so we can use only one function for all images, who's have to run
          * this function animate all the images into running form
          */

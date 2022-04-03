@@ -8,7 +8,6 @@ class BottelBar extends DrawableObject {
         'img/7.Marcadores/Barra/Marcador_botella/Azul/100_.png',
     ];
 
-
     percentage = 0;
 
     constructor() {
@@ -21,8 +20,6 @@ class BottelBar extends DrawableObject {
         this.setPercentage(0);
 
     }
-
-
     //setPercentage(50)
     setPercentage(percentage) {
         this.percentage = percentage;
@@ -30,7 +27,9 @@ class BottelBar extends DrawableObject {
         this.img = this.imagesCache[path];
 
     }
-
+/**
+ * if precentage 100% is then image with 100% and so on
+ */
     resolveImageIndex() {
         if (this.percentage == 100) {
             return 5;

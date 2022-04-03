@@ -24,23 +24,24 @@ class World {
     dead_audio = new Audio('audio/chickenDead.mp3');
 
 
-    //Endboss 
+    //defined Endboss 
     endBoss = level1.enemies[level1.enemies.length - 1];
 
 
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
-        this.canvas = canvas; // canvas definiert und für unten benutzt
+        this.canvas = canvas; // defined Canavs that can be used overall
         this.keyboard = keyboard
         this.draw();
         this.setWorld();
         this.checkCollisionsWithAll();
         /* this.playBgrMusic(); */
-        console.log(this.keyboard);
     }
 
-
+    /**
+     * @returns plays Backgroundmusic 
+     */
     playBgrMusic() {
         this.bgr_music.play();
         this.bgr_music.volume = 0.1;
@@ -53,9 +54,12 @@ class World {
     setWorld() {
         this.character.world = this;
     }
+    /**
+     * @returns it checks collision of character with everything 
+     */
     checkCollisionsWithAll() {
         setInterval(() => {
-            this.checkCollisions();
+            this.checkCollisionsChicken();
             this.checkThrowObject();
             this.checkCollisionsWithBottel();
             this.takeBottels();
@@ -65,15 +69,20 @@ class World {
             this.checkCollisionWithCoins();
         }, 0.5);
     }
-    checkCollisions() {
+    /**
+     * @returns if character collided with chicken/s then calaculate the enegry
+     */
+    checkCollisionsChicken() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energey);
-
             }
         });
     }
+    /**
+     * @returns if character collided with coin/s then calaculate the coins and delete the coins from Canvas
+     */
     checkCollisionWithCoins() {
         this.level.coins.forEach((coin) => {
             if (this.character.isColliding(coin)) {
@@ -84,6 +93,9 @@ class World {
             }
         });
     }
+    /**
+     * @returns if character collided with bottel/s then calaculate bottels and delete the bottels from Canvas
+     */
     takeBottels() {
         this.level.bottels.forEach((bottel) => {
             if (this.character.isColliding(bottel)) {
@@ -94,7 +106,7 @@ class World {
             }
         })
     }
-
+    
     checkThrowObject() {
         if (this.keyboard.D && this.character.bottelCount > 0) {
             let bottel = new ThrowableObject(this.character.x + 100, this.character.y + 100, !this.character.otherDirection);
@@ -102,8 +114,10 @@ class World {
             this.character.bottelCount -= 10;
             this.bottelBar.setPercentage(this.character.bottelCount);
         }
-    }
-
+    }   
+    /**
+     * if bottel collided with chicken or endboss then did some function like chicken dead, reduced energy of Endboss etc. 
+     */
     checkCollisionsWithBottel() {
             this.level.enemies.forEach((enemy) => {
                 this.throwableobjects.forEach((bottel) => {
@@ -112,7 +126,6 @@ class World {
                         enemy.hit();
                         bottel.stopGravity();
                         this.deleteBottelAfterCollison(bottel);
-                        /*  bottel.clearBotttelInterval(); */
 
                         if (enemy.isDead()) {
                             this.dead_audio.play();
@@ -122,16 +135,18 @@ class World {
                     if (bottel.isColliding(this.endBoss)) {
                         this.endBoss.hitBoss();
                         this.deleteBottelAfterCollison(bottel);
-
                         this.endBossHited();
                     }
                     if (this.endBoss.isBossDead()) {
                         this.endBossDead();
                     }
-
                 });
             });
         }
+        /**
+         * 
+         * delete Bottel after 400ms when they collided with chicken or Endboss
+         */
         deleteBottelAfterCollison(bottel){
             setTimeout(() => {
                 this.throwableobjects.splice(this.throwableobjects.indexOf(bottel), 1);
@@ -175,7 +190,9 @@ class World {
             this.bgr_music.pause();
         }
     }
-
+/**
+ * Draw everything in Canvas like charcater, clouds, background, chickens etc.
+ */
     draw() {
         this.ctx.clearRect(0, 0, canvas.width, canvas.height); // to clear the canvas from the x sonst it makes duplicate
         this.ctx.translate(this.camera_x, 0);
@@ -200,9 +217,6 @@ class World {
         this.addObjectToMap(this.level.coins);
         this.addObjectToMap(this.level.bottels);
         this.addObjectToMap(this.throwableobjects);
-
-
-
 
         this.ctx.translate(-this.camera_x, 0);
         let self = this;
@@ -255,6 +269,9 @@ class World {
         this.ctx.restore();
         mo.x = mo.x * -1;
     }
+    /**
+     * if player loss the game then restart and sound etc. will showed and played
+     */
     gameOver() {
         if (this.character.energey == 0) {
             this.game_over.play();
@@ -268,6 +285,9 @@ class World {
             }, 1050);
         }
     }
+    /**
+     * if player win the game then restart and sound etc. will showed and played
+     */
     youWin() {
         if (this.endBoss.bossEnergy == 0) {
             this.bgr_music.pause();

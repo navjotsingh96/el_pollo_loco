@@ -14,8 +14,6 @@ class ThrowableObject extends MoveableObject {
         'img/6.botella/Rotaciขn/Splash de salsa/Mesa de trabajo 1 copia 12.png'
 
     ];
-
-    groundPos = 400;
     broken = false;
     clearSplash;
     bottelGravity;
@@ -37,8 +35,10 @@ class ThrowableObject extends MoveableObject {
         this.applyGravity();
         this.bottelSpeed();
         this.bottelAnimations();
-
     }
+/**
+ * can be used to change speed of thrwoing bottels
+ */
     bottelSpeed() {
         this.bottelGravity = setInterval(() => {
             if (!this.broken) {
@@ -50,7 +50,9 @@ class ThrowableObject extends MoveableObject {
             }
         }, 25);
     }
-
+/**
+ * helps to play animation
+ */
     bottelAnimations() {
         this.clearSplash = setInterval(() => {
             if (this.broken == true) {
@@ -60,7 +62,10 @@ class ThrowableObject extends MoveableObject {
             }
         }, 200);
     }
-
+/**
+ * with this function bottel after hitting Chicken instead falling out of canvas, stay in canvas and 
+ * play Splash images on the spot where it was hit.
+ */
     stopGravity() {
         super.stopGravity();
         this.broken = true;
@@ -69,5 +74,4 @@ class ThrowableObject extends MoveableObject {
             clearInterval(this.clearSplash);
         }, 800);
     }
-
 }

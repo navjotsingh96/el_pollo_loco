@@ -8,8 +8,6 @@ class StatusBar extends DrawableObject {
         'img/7.Marcadores/Barra/Marcador-vida/verde/100_.png'
     ];
 
-
-
     percentage = 100;
 
     constructor() {
@@ -22,8 +20,6 @@ class StatusBar extends DrawableObject {
         this.setPercentage(100);
 
     }
-
-
     //setPercentage(50)
     setPercentage(percentage) {
         this.percentage = percentage;
@@ -31,7 +27,9 @@ class StatusBar extends DrawableObject {
         this.img = this.imagesCache[path];
 
     }
-
+/**
+ * if precentage 100% is then image with 100% and so on
+ */
     resolveImageIndex() {
         if (this.percentage == 100) {
             return 5;

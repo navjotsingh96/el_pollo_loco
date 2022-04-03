@@ -98,7 +98,9 @@ class Character extends MoveableObject {
             this.animationPlay();
         }, this.playInterval);
     }
-
+/**
+ * if key were pressed or if key is pressing 
+ */
     characterMoving() {
         this.walking_sound.pause();
 
@@ -122,7 +124,9 @@ class Character extends MoveableObject {
         this.world.camera_x = -this.x + 80;
     }
 
-
+/**
+ * if e.g. Arrow up is pressed it's play jump Images and so on.
+ */
     animationPlay() {
         if (this.isDead()) {
             this.playAnimation(this.IMAGES_DEAD);
@@ -144,6 +148,9 @@ class Character extends MoveableObject {
             this.sleepingCharacter();
         }
     }
+/**
+ * if character had not moved within 2sec. than plays boaring ani. and when had not moved within 5sec. than plays sleeping animation.
+ */
     sleepingCharacter() {
         this.firstMove = new Date().getTime() - this.lastMove;
         if (this.firstMove > 2000) {
@@ -154,12 +161,4 @@ class Character extends MoveableObject {
             this.sleep_sound.play();
         }
     }
-    setBgrMute() {
-        if (this.world.keyboard.M) {
-            this.bgr_music.pause();
-            console.log(this.world.keyboard.M);
-        }
-    }
-
-
 }

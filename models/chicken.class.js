@@ -12,7 +12,8 @@ class Chicken extends MoveableObject {
         'img/4.Secuencias_Enemy_gigantขn-Doคa_Gallinota-/4.Muerte/G24.png',
         'img/4.Secuencias_Enemy_gigantขn-Doคa_Gallinota-/4.Muerte/G25.png',
         'img/4.Secuencias_Enemy_gigantขn-Doคa_Gallinota-/4.Muerte/G26.png',
-    ]
+    ];
+    
     energey = 5;
 
     constructor() {
@@ -29,7 +30,6 @@ class Chicken extends MoveableObject {
     }
 
     animate() {
-
             setInterval(() => {
                 this.moveLeft();
                 this.otherDirection = false;
@@ -39,9 +39,10 @@ class Chicken extends MoveableObject {
                 this.playAnimation(this.WALKING_IMAGES);
                 this.chickenHurt();
             }, 150);
-
         }
-        // If chicken hurts then play animation
+/**
+* If chicken hurts then play animation
+ */
     chickenHurt() {
 
         if (this.isDead()) {

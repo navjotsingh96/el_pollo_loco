@@ -1,9 +1,10 @@
 let canvas;
 let world;
 let keyborad = new Keyboard();
-var canvasW = 640;
-var canvasH = 480;
 
+/**
+ * start screen image, play button
+ */
 function startGame() {
     document.getElementById('startScreen').classList.add('d-none');
     document.getElementById('btn-cont').classList.add('d-none');
@@ -17,10 +18,12 @@ function init() {
     world = new World(canvas, keyborad);
 }
 
-
 function fullscreen() {
     canvas.requestFullscreen();
 }
+/**
+ * keyboard kyes if user prees key e.g. arrowup than UP sets to true 
+ */
 window.addEventListener("keydown", (e) => {
     if (e.keyCode == 38) {
         keyborad.UP = true;
@@ -48,6 +51,10 @@ window.addEventListener("keydown", (e) => {
     }
 
 })
+/**
+ * keyboard kyes if key is no more pressed e.g Arrowup if user press that key then UP sets to true 
+ * but after when user that key no more pressed UP sets to false.  
+ */
 window.addEventListener("keyup", (e) => {
         if (e.keyCode == 38) {
             keyborad.UP = false;
@@ -73,6 +80,7 @@ window.addEventListener("keyup", (e) => {
 
     })
     /* for smartphone keys*/
+
 function touchDownLeft() {
     keyborad.LEFT = true;
 }

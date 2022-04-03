@@ -10,17 +10,8 @@ class Bottels extends MoveableObject {
 
     constructor(x, y) {
         super().loadImage('img/6.botella/2.Botella_enterrada1.png', x, y);
-
-
         this.x = x;
         this.y = y;
-        /* this.animate() */
         ;
     }
-    animate() {
-        setInterval(() => {
-            this.playAnimation(this.IMAGES);
-        }, 500);
-    }
-
 }
