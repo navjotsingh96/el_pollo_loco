@@ -120,6 +120,7 @@ class MoveableObject extends DrawableObject {
         this.img = this.imagesCache[path]; // img variable in moveable object
         this.currentImage++;
     }
+    
     moveRight() {
         this.x += this.speed;
         this.otherDirection = false;
