@@ -36,7 +36,7 @@ class World {
         this.draw();
         this.setWorld();
         this.checkCollisionsWithAll();
-        /* this.playBgrMusic(); */
+        this.playBgrMusic();
     }
 
     /**
@@ -52,50 +52,50 @@ class World {
     }
 
     setWorld() {
-        this.character.world = this;
-    }
-    /**
-     * @returns it checks collision of character with everything 
-     */
+            this.character.world = this;
+        }
+        /**
+         * @returns it checks collision of character with everything 
+         */
     checkCollisionsWithAll() {
-        setInterval(() => {
-            this.checkCollisionsChicken();
-            this.checkThrowObject();
-            this.checkCollisionsWithBottel();
-            this.takeBottels();
-            this.gameOver();
-        }, 50);
-        setInterval(() => {
-            this.checkCollisionWithCoins();
-        }, 0.5);
-    }
-    /**
-     * @returns if character collided with chicken/s then calaculate the enegry
-     */
+            setInterval(() => {
+                this.checkCollisionsChicken();
+                this.checkThrowObject();
+                this.checkCollisionsWithBottel();
+                this.takeBottels();
+                this.gameOver();
+            }, 50);
+            setInterval(() => {
+                this.checkCollisionWithCoins();
+            }, 0.5);
+        }
+        /**
+         * @returns if character collided with chicken/s then calaculate the enegry
+         */
     checkCollisionsChicken() {
-        this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy)) {
-                this.character.hit();
-                this.statusBar.setPercentage(this.character.energey);
-            }
-        });
-    }
-    /**
-     * @returns if character collided with coin/s then calaculate the coins and delete the coins from Canvas
-     */
+            this.level.enemies.forEach((enemy) => {
+                if (this.character.isColliding(enemy)) {
+                    this.character.hit();
+                    this.statusBar.setPercentage(this.character.energey);
+                }
+            });
+        }
+        /**
+         * @returns if character collided with coin/s then calaculate the coins and delete the coins from Canvas
+         */
     checkCollisionWithCoins() {
-        this.level.coins.forEach((coin) => {
-            if (this.character.isColliding(coin)) {
-                this.character.hitCoin();
-                this.coinBar.setPercentage(this.character.coinsCount);
-                this.coin_sound.play();
-                this.level.coins.splice(this.level.coins.indexOf(coin), 1);
-            }
-        });
-    }
-    /**
-     * @returns if character collided with bottel/s then calaculate bottels and delete the bottels from Canvas
-     */
+            this.level.coins.forEach((coin) => {
+                if (this.character.isColliding(coin)) {
+                    this.character.hitCoin();
+                    this.coinBar.setPercentage(this.character.coinsCount);
+                    this.coin_sound.play();
+                    this.level.coins.splice(this.level.coins.indexOf(coin), 1);
+                }
+            });
+        }
+        /**
+         * @returns if character collided with bottel/s then calaculate bottels and delete the bottels from Canvas
+         */
     takeBottels() {
         this.level.bottels.forEach((bottel) => {
             if (this.character.isColliding(bottel)) {
@@ -106,18 +106,18 @@ class World {
             }
         })
     }
-    
+
     checkThrowObject() {
-        if (this.keyboard.D && this.character.bottelCount > 0) {
-            let bottel = new ThrowableObject(this.character.x + 100, this.character.y + 100, !this.character.otherDirection);
-            this.throwableobjects.push(bottel);
-            this.character.bottelCount -= 10;
-            this.bottelBar.setPercentage(this.character.bottelCount);
+            if (this.keyboard.D && this.character.bottelCount > 0) {
+                let bottel = new ThrowableObject(this.character.x + 100, this.character.y + 100, !this.character.otherDirection);
+                this.throwableobjects.push(bottel);
+                this.character.bottelCount -= 10;
+                this.bottelBar.setPercentage(this.character.bottelCount);
+            }
         }
-    }   
-    /**
-     * if bottel collided with chicken or endboss then did some function like chicken dead, reduced energy of Endboss etc. 
-     */
+        /**
+         * if bottel collided with chicken or endboss then did some function like chicken dead, reduced energy of Endboss etc. 
+         */
     checkCollisionsWithBottel() {
             this.level.enemies.forEach((enemy) => {
                 this.throwableobjects.forEach((bottel) => {
@@ -147,7 +147,7 @@ class World {
          * 
          * delete Bottel after 400ms when they collided with chicken or Endboss
          */
-        deleteBottelAfterCollison(bottel){
+    deleteBottelAfterCollison(bottel) {
             setTimeout(() => {
                 this.throwableobjects.splice(this.throwableobjects.indexOf(bottel), 1);
             }, 400);
@@ -156,7 +156,7 @@ class World {
          * delete chicken from Array but wait because of dead animation.
          */
     deleteChicken(enemy) {
-            /*  this.dead_sound.play(); */
+            this.dead_sound.play();
             setTimeout(() => {
                 this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
 
@@ -186,13 +186,13 @@ class World {
         }, 2000);
     }
     pauseMusic() {
-        if (keyboard.M) {
-            this.bgr_music.pause();
+            if (keyboard.M) {
+                this.bgr_music.pause();
+            }
         }
-    }
-/**
- * Draw everything in Canvas like charcater, clouds, background, chickens etc.
- */
+        /**
+         * Draw everything in Canvas like charcater, clouds, background, chickens etc.
+         */
     draw() {
         this.ctx.clearRect(0, 0, canvas.width, canvas.height); // to clear the canvas from the x sonst it makes duplicate
         this.ctx.translate(this.camera_x, 0);
@@ -246,7 +246,7 @@ class World {
             }
             mo.draw(this.ctx); // this function help to reduce the code make clear to read
             // normaly will so written this.ctx.drawImage(this.character.img, this.character.x, this.character.y, this.character.width, this.character.height)
-            mo.drawFrames(this.ctx);
+            /* mo.drawFrames(this.ctx); */
             if (mo.otherDirection) {
                 this.flipImageBack(mo);
             }
@@ -266,28 +266,28 @@ class World {
      * @returns flips the Character(images) to normal or right if user press right key
      */
     flipImageBack(mo) {
-        this.ctx.restore();
-        mo.x = mo.x * -1;
-    }
-    /**
-     * if player loss the game then restart and sound etc. will showed and played
-     */
-    gameOver() {
-        if (this.character.energey == 0) {
-            this.game_over.play();
-            this.bgr_music.pause();
-            this.keyboard = false;
-
-            setTimeout(() => {
-                document.getElementById('endScreen').classList.remove('d-none');
-                document.getElementById('restartBtn').classList.remove('d-none');
-
-            }, 1050);
+            this.ctx.restore();
+            mo.x = mo.x * -1;
         }
-    }
-    /**
-     * if player win the game then restart and sound etc. will showed and played
-     */
+        /**
+         * if player loss the game then restart and sound etc. will showed and played
+         */
+    gameOver() {
+            if (this.character.energey == 0) {
+                this.game_over.play();
+                this.bgr_music.pause();
+                this.keyboard = false;
+
+                setTimeout(() => {
+                    document.getElementById('endScreen').classList.remove('d-none');
+                    document.getElementById('restartBtn').classList.remove('d-none');
+
+                }, 1050);
+            }
+        }
+        /**
+         * if player win the game then restart and sound etc. will showed and played
+         */
     youWin() {
         if (this.endBoss.bossEnergy == 0) {
             this.bgr_music.pause();

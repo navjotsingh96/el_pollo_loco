@@ -17,8 +17,7 @@ class Character extends MoveableObject {
         'img/2.Secuencias_Personaje-Pepe-correcciขn/3.Secuencia_salto/J-36.png',
         'img/2.Secuencias_Personaje-Pepe-correcciขn/3.Secuencia_salto/J-37.png',
         'img/2.Secuencias_Personaje-Pepe-correcciขn/3.Secuencia_salto/J-38.png',
-        'img/2.Secuencias_Personaje-Pepe-correcciขn/3.Secuencia_salto/J-39.png',
-        'img/2.Secuencias_Personaje-Pepe-correcciขn/3.Secuencia_salto/J-40.png'
+        'img/2.Secuencias_Personaje-Pepe-correcciขn/3.Secuencia_salto/J-39.png'
 
     ];
 
@@ -88,19 +87,19 @@ class Character extends MoveableObject {
         this.applyGravity();
     }
     animate() {
-        setInterval(() => {
-                this.characterMoving();
-            },
-            1000 / 60);
-        // Helps to show to picture of pepe running
+            setInterval(() => {
+                    this.characterMoving();
+                },
+                1000 / 60);
+            // Helps to show to picture of pepe running
 
-        setInterval(() => {
-            this.animationPlay();
-        }, this.playInterval);
-    }
-/**
- * if key were pressed or if key is pressing 
- */
+            setInterval(() => {
+                this.animationPlay();
+            }, this.playInterval);
+        }
+        /**
+         * if key were pressed or if key is pressing 
+         */
     characterMoving() {
         this.walking_sound.pause();
 
@@ -124,33 +123,33 @@ class Character extends MoveableObject {
         this.world.camera_x = -this.x + 80;
     }
 
-/**
- * if e.g. Arrow up is pressed it's play jump Images and so on.
- */
+    /**
+     * if e.g. Arrow up is pressed it's play jump Images and so on.
+     */
     animationPlay() {
-        if (this.isDead()) {
-            this.playAnimation(this.IMAGES_DEAD);
+            if (this.isDead()) {
+                this.playAnimation(this.IMAGES_DEAD);
 
-        } else if (this.isHurt()) {
-            this.playAnimation(this.IMAGES_HURT);
-            this.hurting_sound.volume = 0.1;
-            /* this.hurting_sound.play(); */
-        } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-            this.playAnimation(this.WALKING_IMAGES);
+            } else if (this.isHurt()) {
+                this.playAnimation(this.IMAGES_HURT);
+                this.hurting_sound.volume = 0.1;
+                this.hurting_sound.play();
+            } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+                this.playAnimation(this.WALKING_IMAGES);
 
 
-        } else if (this.isAboveGround()) {
-            this.playAnimation(this.IMAGES_JUMPING);
+            } else if (this.isAboveGround()) {
+                this.playAnimation(this.IMAGES_JUMPING);
 
-        } else if (this.y == 145.5) {
-            this.playAnimation(this.IMAGES_BOARING);
-        } else {
-            this.sleepingCharacter();
+            } else if (this.y == 145.5) {
+                this.playAnimation(this.IMAGES_BOARING);
+            } else {
+                this.sleepingCharacter();
+            }
         }
-    }
-/**
- * if character had not moved within 2sec. than plays boaring ani. and when had not moved within 5sec. than plays sleeping animation.
- */
+        /**
+         * if character had not moved within 2sec. than plays boaring ani. and when had not moved within 5sec. than plays sleeping animation.
+         */
     sleepingCharacter() {
         this.firstMove = new Date().getTime() - this.lastMove;
         if (this.firstMove > 2000) {
