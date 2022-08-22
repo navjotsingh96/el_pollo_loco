@@ -12,4 +12,10 @@ class Clouds extends MoveableObject {
     animate() {
         this.moveLeft();
     }
+    moveLeft() {
+        // Diese Funktion beweget die Bilder in einem gewissen Intervall
+        setInterval(() => {
+                this.x -= this.speed;
+            }, 1000 / 60) // <---- Hier wird die Intervalldauer eingegeben
+    }
 }

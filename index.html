@@ -13,8 +13,9 @@
     <script src="models/moveable-object.class.js"></script>
     <script src="models/character.class.js"></script>
     <script src="models/chicken.class.js"></script>
-    <script src="models/clouds.class.js"></script>
     <script src="models/status-bar.class.js"></script>
+    <script src="models/clouds.class.js"></script>
+
     <script src="models/coin-status-bar.class.js"></script>
     <script src="models/bottels-bar.class.js"></script>
     <script src="models/boss-status.class.js"></script>
@@ -49,7 +50,7 @@
     <!--Endscrenn-->
     <div class="container">
         <img class="d-none" id="endScreen" src="img/9.Intro _ Outro Image/_Game over_ screen/3.Game over.png">
-        <div id="restartBtn" class=" btn-cont d-none">
+        <div id="restartBtn" class="btn-cont btn-full d-none">
             <button class="btn"><a href="index.html">Restartgame</a></button>
         </div>
 
@@ -102,7 +103,7 @@
     <!--Fullscrenn-->
 
     <div class="responsvie">
-        <button onclick="fullscreen()" class="btn-full"> 
+        <button onclick="fullscreen()" id="full-screen" class="btn-full d-none"> 
             Fullscreen
         </button>
     </div>

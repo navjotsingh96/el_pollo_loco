@@ -200,6 +200,8 @@ class World {
 
 
         this.ctx.translate(-this.camera_x, 0);
+        this.addObjectToMap(this.level.clouds);
+
         // ----- Space for fixed Objects---
         this.addToMap(this.statusBar);
         this.addToMap(this.bottelBar);
@@ -212,7 +214,6 @@ class World {
         this.addToMap(this.icon);
         /* this.addToMap(this.coinBar); */
 
-        this.addObjectToMap(this.level.clouds);
         this.addObjectToMap(this.level.enemies);
         this.addObjectToMap(this.level.coins);
         this.addObjectToMap(this.level.bottels);

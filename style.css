@@ -24,7 +24,7 @@ canvas {
     width: 720px;
     height: 480px;
     position: absolute;
-    top: 0;
+    top: 100%;
 }
 
 h3 {
@@ -43,6 +43,11 @@ h3 {
     flex-wrap: wrap;
     width: 720px;
     margin-top: 20px;
+}
+
+.btn a {
+    color: black;
+    text-decoration: none;
 }
 
 .btn-cont {

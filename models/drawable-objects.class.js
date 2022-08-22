@@ -26,7 +26,7 @@ class DrawableObject {
      * Helps to draw rectangels arounds objects(images) 
      * instanceof used only for specific objects that i want to show, apart of will not been shown
      */
-    drawFrames(ctx) {
+  /*   drawFrames(ctx) {
         if (this instanceof Character || this instanceof Chicken || this instanceof Endboss || this instanceof Coins || this instanceof Bottels) {
             ctx.beginPath();
             ctx.lineWidth = '3';
@@ -34,7 +34,7 @@ class DrawableObject {
             ctx.rect(this.x, this.y, this.width, this.height);
             ctx.stroke();
         }
-    }
+    } */
 
     /**
      * to load images from Json array

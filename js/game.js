@@ -10,6 +10,8 @@ function startGame() {
     document.getElementById('btn-cont').classList.add('d-none');
     /*  document.getElementById('smartphone').classList.remove('d-none'); */
     init();
+    document.getElementById('full-screen').classList.remove('d-none');
+
 }
 
 function init() {
